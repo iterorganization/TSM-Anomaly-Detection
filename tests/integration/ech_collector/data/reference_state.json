@@ -1,0 +1,13 @@
+{
+    "name": "ech_collector_synthetic",
+    "version": "0.0.1",
+    "config_hash": "40645c946f906de376e8a3d803ce245f2fe1c2f58928d80a076770b4ce917cd6",
+    "history": {
+        "path": "history/manifest.json",
+        "hash": "a4e3ee41d0ed90be125546ee941c123f1a47743530015ef40bf6d9b3f8370447"
+    },
+    "cache": {
+        "path": "cache/manifest.json",
+        "hash": "6ff3834df8cdd3cfef6aa3d219b23e2aadacbcc7d7fd8042c41e86d3929f0203"
+    }
+}

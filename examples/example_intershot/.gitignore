@@ -1,0 +1,6 @@
+data/
+history/
+cache/
+reference_state.json
+*.h5
+*.npz

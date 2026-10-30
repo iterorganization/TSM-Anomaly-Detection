@@ -1,0 +1,14 @@
+# Coverage
+.coverage
+
+# IDEs folder
+.vscode/
+
+# Python env and files
+.venv/
+*.egg-info/
+__pycache__
+
+# Sphinx build
+docs/build/
+docs/source/algorithms/generated/

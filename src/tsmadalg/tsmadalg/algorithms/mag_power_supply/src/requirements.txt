@@ -1,0 +1,6 @@
+pandas<3.0
+numpy
+matplotlib
+torch
+pytorch_lightning
+FrEIA

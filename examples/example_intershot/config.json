@@ -1,0 +1,18 @@
+{
+    "name": "intershot_clustering_demo",
+    "model": null,
+    "parameters": {
+        "frequency": 100,
+        "domain": ["statistical"],
+        "n_components": 0.9,
+        "eps": 4.75,
+        "min_samples": 7
+    },
+    "signals": {
+        "targets": ["sensor_0"]
+    },
+    "reference_state": {
+        "path": "reference_state.json",
+        "check": "full"
+    }
+}

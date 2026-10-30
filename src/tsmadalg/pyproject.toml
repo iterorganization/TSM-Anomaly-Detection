@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=77.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tsmadalg"
+description = "TSM Anomaly Detection Algorithm Catalog" 
+authors = [
+    {name = "Joris Paret", email = "joris.paret@gmail.com"}
+]
+readme = "README.md"
+license = "LGPL-3.0-or-later"
+requires-python = ">=3.10"
+dynamic = ["version"]
+dependencies = [
+    "tsmadkit",
+]
+
+[project.optional-dependencies]
+tools = [
+    "rich"
+]
+dev = [
+    "pytest",
+    "pytest-cov"	
+]
+
+[project.scripts]
+tsmadalg = "tsmadalg.tools.cli:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.dynamic]
+version = {attr = "tsmadalg._version.__version__"}
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.setuptools.package-data]
+"*" = [
+    "*.json", "*.yaml", "*.yml", "*.toml", "*.npz", 
+    "*.npy", "*.csv", "*.tsv", "*.dat", "*.pkl",
+    "*.joblib", "*.ckpt", "*.pt", "*.pth", "*.h5",
+    "*.hdf5", "*.pb", "*.onnx", "*.tflite", "*.engine",
+    "*.trt", "*.meta", "*.index", "*.bin", "*.txt", "*.md"
+]
+
+[project.urls]
+repository = "https://github.com/iterorganization/TSM-Anomaly-Detection"

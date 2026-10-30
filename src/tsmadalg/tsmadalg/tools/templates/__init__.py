@@ -1,0 +1,1 @@
+from .templates import generate_algorithm_template

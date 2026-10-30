@@ -1,0 +1,25 @@
+from tsmadkit import AnomalyDetection, AnomalyResult
+from tsmadkit.signals import SignalSet
+
+
+class ${class_name}(AnomalyDetection):
+    """
+    ${class_name} anomaly detection algorithm.
+
+    TODO: Add algorithm description here.
+    """
+
+    __version__ = "${version}"
+
+    def detect(self, signals: SignalSet) -> AnomalyResult:
+        """
+        Perform anomaly detection on the provided signals.
+        """
+        # TODO: Implement your anomaly detection logic here
+        # Access target values via: signals.target_values
+        # Access context values via: signals.context_values
+        # Access algorithm parameters via: self.<parameter_name>
+        # Access model, if loaded, via: self.model
+
+        is_anomaly = False
+        return AnomalyResult(is_anomaly=is_anomaly)

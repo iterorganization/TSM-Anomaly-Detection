@@ -1,0 +1,14 @@
+{
+    "name": "synchronized_lstm_demo",
+    "model": {
+        "source": "keras",
+        "path": "lstm.keras"
+    },
+    "parameters": {
+        "window_size": 64,
+        "abs_error_threshold": 0.35
+    },
+    "signals": {
+        "targets": ["sensor_0"]
+    }
+}

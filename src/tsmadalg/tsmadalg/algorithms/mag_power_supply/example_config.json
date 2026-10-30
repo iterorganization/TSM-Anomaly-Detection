@@ -1,0 +1,67 @@
+{
+    "name": "mag_power_supply_example",
+    "model": {
+        "source": "custom",
+        "path": "cinn.ckpt"
+    },
+    "parameters": {
+        "device": "cpu",
+        "nll_thresholds": [
+            -4.0,
+            -4.0,
+            -4.0,
+            -4.0,
+            -4.0,
+            -4.0,
+            -4.0,
+            -4.0,
+            -4.0,
+            -4.0,
+            -4.0,
+            -4.0
+        ]
+    },
+    "artifacts": [
+        "norms.npz"
+    ],
+    "signals": {
+        "context":[
+            "CS3U_in",
+            "CS2U_in",
+            "CS1_in",
+            "CS2L_in",
+            "CS3L_in",
+            "PF1_in",
+            "PF2_in",
+            "PF3_in",
+            "PF4_in",
+            "PF5_in",
+            "PF6_in",
+            "VS1_in",
+            "CS3U_sim",
+            "CS2U_sim",
+            "CS1_sim",
+            "CS2L_sim",
+            "CS3L_sim",
+            "PF1_sim",
+            "PF2_sim",
+            "PF3_sim",
+            "PF4_sim",
+            "PF5_sim",
+            "PF6_sim",
+            "VS1_sim"],
+        "targets":[
+            "CS3U_out",
+            "CS2U_out",
+            "CS1_out",
+            "CS2L_out",
+            "CS3L_out",
+            "PF1_out",
+            "PF2_out",
+            "PF3_out",
+            "PF4_out",
+            "PF5_out",
+            "PF6_out",
+            "VS1_out"]
+    }
+}

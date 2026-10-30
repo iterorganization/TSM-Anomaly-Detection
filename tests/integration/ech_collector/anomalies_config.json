@@ -1,0 +1,44 @@
+{
+    "seed": 17,
+    "output_dir": "data/anomalies",
+    "anomalies": {
+        "count": 50,
+        "n_faults": [1, 2],
+        "bounds": {
+            "t_begin": [2.0, 4.0],
+            "t_end": [150.0, 200.0],
+            "heat_duration": [25.0, 150.0],
+            "T_0": [18.0, 22.0],
+            "Q_total": [8000.0, 16000.0],
+            "heat_sigma": [0.25, 0.3],
+            "R_radial": [0.04, 0.06],
+            "R_cooling": [0.08, 0.12]
+        },
+        "faults": {
+            "cooling_degradation": {
+                "t_start": [10.0, 55.0],
+                "factor_final": [1.1, 1.3],
+                "tau": [30.0, 55.0]
+            },
+            "heat_shift": {
+                "t_start": [25.0, 60.0],
+                "duration": [60.0, 100.0],
+                "shift": [0.02, 0.06]
+            },
+            "heat_fluctuation": {
+                "amplitude": [0.02, 0.05],
+                "frequency": [0.006, 0.025],
+                "phase": [0.0, 6.283]
+            },
+            "coolant_ramp": {
+                "t_start": [0.0, 50.0],
+                "rate": [[-0.12, -0.03], [0.03, 0.12]]
+            },
+            "radial_resistance_change": {
+                "t_start": [25.0, 45.0],
+                "duration": [60.0, 110.0],
+                "factor": [[0.05, 0.4], [1.3, 2.5]]
+            }
+        }
+    }
+}
