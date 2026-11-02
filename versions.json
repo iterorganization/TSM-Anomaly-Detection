@@ -1,0 +1,10 @@
+[
+  {
+    "version": "stable",
+    "url": "https://iterorganization.github.io/TSM-Anomaly-Detection/stable/"
+  },
+  {
+    "version": "dev",
+    "url": "https://iterorganization.github.io/TSM-Anomaly-Detection/dev/"
+  }
+]

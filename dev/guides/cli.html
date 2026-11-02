@@ -1,0 +1,432 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tsmadalg Command-Line Interface &mdash; TSM Anomaly Detection Algorithms  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/treeview.css?v=f8e9195c" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/treeview.js?v=265ad9b8"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Algorithm Catalog" href="../algorithms/index.html" />
+    <link rel="prev" title="Create a New Algorithm" href="create-algorithm.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            TSM Anomaly Detection Algorithms
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#two-packages-one-workflow">Two Packages, One Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#repository-layout">Repository Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#your-first-runtime-flow">Your First Runtime Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#understanding-the-result-object">Understanding the Result Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#configuration-comes-first">Configuration Comes First</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#detectors-that-compare-against-history">Detectors That Compare Against History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#using-the-catalog">Using the Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#package-boundaries">Package Boundaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#end-to-end-runtime-flow">End-to-End Runtime Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#configuration-and-instance-state">Configuration and Instance State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#built-in-setup-behavior">Built-In Setup Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#detector-contracts">Detector Contracts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#discovery-and-registry">Discovery and Registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#algorithm-availability">Algorithm Availability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#generated-algorithm-pages">Generated Algorithm Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#how-everything-fits-together">How Everything Fits Together</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../citing.html">Citing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#minimal-valid-configuration">Minimal Valid Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#schema-overview">Schema Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#role-of-each-entry">Role of Each Entry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#detailed-semantics">Detailed Semantics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#name"><code class="docutils literal notranslate"><span class="pre">name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#signals"><code class="docutils literal notranslate"><span class="pre">signals</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#parameters"><code class="docutils literal notranslate"><span class="pre">parameters</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#model"><code class="docutils literal notranslate"><span class="pre">model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#anomaly-classes"><code class="docutils literal notranslate"><span class="pre">anomaly_classes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#artifacts"><code class="docutils literal notranslate"><span class="pre">artifacts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#reference-state"><code class="docutils literal notranslate"><span class="pre">reference_state</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#complete-example">Complete Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#validation-helpers">Validation Helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#what-happens-after-loading">What Happens After Loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#configuration-and-documentation">Configuration and Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#related-runtime-input-shape">Related Runtime Input Shape</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#related-pages">Related Pages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference-state.html">Reference-State Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference-state.html#two-kinds-of-files">Two Kinds of Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference-state.html#how-history-and-cache-stay-in-sync">How History and Cache Stay in Sync</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference-state.html#starting-from-scratch">Starting From Scratch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference-state.html#using-the-cache-in-detect">Using the Cache in <code class="docutils literal notranslate"><span class="pre">detect()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference-state.html#where-to-go-next">Where to Go Next</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="create-algorithm.html">Create a New Algorithm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#required-package-layout">Required Package Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#naming-convention">Naming Convention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#minimal-single-input-example">Minimal Single-Input Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#matching-configuration">Matching Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#the-implementation-contract">The Implementation Contract</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="create-algorithm.html#constructor">Constructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="create-algorithm.html#setup"><code class="docutils literal notranslate"><span class="pre">setup()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="create-algorithm.html#detect"><code class="docutils literal notranslate"><span class="pre">detect()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#populate-anomalyresult-deliberately">Populate <code class="docutils literal notranslate"><span class="pre">AnomalyResult</span></code> Deliberately</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#use-models-carefully">Use Models Carefully</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#reference-state-example-pattern">Reference-State Example Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#testing-discovery">Testing Discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#using-the-template-generator">Using the Template Generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#checklist">Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#related-pages">Related Pages</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span></code> Command-Line Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tsmadalg-list"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">list</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tsmadalg-create"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">create</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tsmadalg-run"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">run</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#relationship-to-the-registry-api">Relationship to the Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recommended-workflow">Recommended Workflow</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Algorithms</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/index.html">Algorithm Catalog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/index.html#what-these-pages-contain">What These Pages Contain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/index.html#how-to-interpret-the-catalog">How to Interpret the Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/index.html#available-algorithms">Available Algorithms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/generated/ech_collector.html">ech_collector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/generated/mag_power_supply.html">mag_power_supply</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/tsmadkit.html">tsmadkit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/tsmadkit.html#module-tsmadkit">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/tsmadkit.html#module-tsmadkit.anomaly_detection">Core modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.anomaly_detection.AnomalyDetection"><code class="docutils literal notranslate"><span class="pre">AnomalyDetection</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.anomaly_result.AnomalyResult"><code class="docutils literal notranslate"><span class="pre">AnomalyResult</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.config.SignalsConfig"><code class="docutils literal notranslate"><span class="pre">SignalsConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.config.ModelConfig"><code class="docutils literal notranslate"><span class="pre">ModelConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.config.ReferenceStateConfig"><code class="docutils literal notranslate"><span class="pre">ReferenceStateConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.config.AlgorithmConfig"><code class="docutils literal notranslate"><span class="pre">AlgorithmConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.signals.SignalSpec"><code class="docutils literal notranslate"><span class="pre">SignalSpec</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.signals.SignalSet"><code class="docutils literal notranslate"><span class="pre">SignalSet</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.data.DataDict"><code class="docutils literal notranslate"><span class="pre">DataDict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.io.read_json"><code class="docutils literal notranslate"><span class="pre">read_json()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.io.write_json"><code class="docutils literal notranslate"><span class="pre">write_json()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.io.read_json_input_data"><code class="docutils literal notranslate"><span class="pre">read_json_input_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.io.write_json_input_data"><code class="docutils literal notranslate"><span class="pre">write_json_input_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.io.read_hdf5_input_data"><code class="docutils literal notranslate"><span class="pre">read_hdf5_input_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.io.write_hdf5_input_data"><code class="docutils literal notranslate"><span class="pre">write_hdf5_input_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.state.file_sha256"><code class="docutils literal notranslate"><span class="pre">file_sha256()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.state.StateFileConfig"><code class="docutils literal notranslate"><span class="pre">StateFileConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.state.CacheFileConfig"><code class="docutils literal notranslate"><span class="pre">CacheFileConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.state.ReferenceStateFileConfig"><code class="docutils literal notranslate"><span class="pre">ReferenceStateFileConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.state.State"><code class="docutils literal notranslate"><span class="pre">State</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.state.ManifestState"><code class="docutils literal notranslate"><span class="pre">ManifestState</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.state.HistoryState"><code class="docutils literal notranslate"><span class="pre">HistoryState</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.state.CacheState"><code class="docutils literal notranslate"><span class="pre">CacheState</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.state.ReferenceState"><code class="docutils literal notranslate"><span class="pre">ReferenceState</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.state.stack_cache_rows"><code class="docutils literal notranslate"><span class="pre">stack_cache_rows()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.preprocessing.get_above_threshold_window"><code class="docutils literal notranslate"><span class="pre">get_above_threshold_window()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/tsmadalg.html">tsmadalg</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/tsmadalg.html#module-tsmadalg">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/tsmadalg.html#module-tsmadalg.tools.registry">Registry and CLI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadalg.html#tsmadalg.tools.registry.list_algorithms"><code class="docutils literal notranslate"><span class="pre">list_algorithms()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadalg.html#tsmadalg.tools.registry.get_algorithm_class"><code class="docutils literal notranslate"><span class="pre">get_algorithm_class()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/tsmadalg.html#templates">Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/tsmadalg.html#module-tsmadalg.algorithms">Algorithm discovery</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadalg.html#algorithm-catalog">Algorithm catalog</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TSM Anomaly Detection Algorithms</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span></code> Command-Line Interface</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guides/cli.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tsmadalg-command-line-interface">
+<span id="cli-guide"></span><h1><code class="docutils literal notranslate"><span class="pre">tsmadalg</span></code> Command-Line Interface<a class="headerlink" href="#tsmadalg-command-line-interface" title="Link to this heading"></a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">tsmadalg</span></code> package exposes a small CLI for working with the algorithm
+catalog. It is mainly a development and inspection tool: it helps you discover
+what the registry can see and scaffold new algorithm packages from the expected
+layout.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The top-level command is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tsmadalg<span class="w"> </span>--help
+</pre></div>
+</div>
+<p>The currently defined subcommands are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">list</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">create</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">run</span></code></p></li>
+</ul>
+</section>
+<section id="tsmadalg-list">
+<h2><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">list</span></code><a class="headerlink" href="#tsmadalg-list" title="Link to this heading"></a></h2>
+<p>Use this command to inspect the algorithm registry:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tsmadalg<span class="w"> </span>list
+</pre></div>
+</div>
+<p>It prints a table with:</p>
+<ul class="simple">
+<li><p>algorithm name</p></li>
+<li><p>version declared by the class <code class="docutils literal notranslate"><span class="pre">__version__</span></code></p></li>
+<li><p>availability status</p></li>
+<li><p>module/class (when available) or the import error message</p></li>
+</ul>
+<p>This command is especially useful after adding a new algorithm package because it
+shows not only successful discoveries but also failures caused by missing
+dependencies or import-time exceptions.</p>
+<p>The command is backed by <a class="reference internal" href="../api/tsmadalg.html#tsmadalg.tools.registry.list_algorithms" title="tsmadalg.tools.registry.list_algorithms"><code class="xref py py-func docutils literal notranslate"><span class="pre">tsmadalg.tools.registry.list_algorithms()</span></code></a>, so the
+CLI view and the Python API view use the same registry data.</p>
+</section>
+<section id="tsmadalg-create">
+<h2><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">create</span></code><a class="headerlink" href="#tsmadalg-create" title="Link to this heading"></a></h2>
+<p>Use this command to generate a new algorithm skeleton:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tsmadalg<span class="w"> </span>create<span class="w"> </span>my_detector
+</pre></div>
+</div>
+<p>By default, the template:</p>
+<ul class="simple">
+<li><p>creates a new package under <code class="docutils literal notranslate"><span class="pre">tsmadalg/algorithms</span></code> (or under
+<code class="docutils literal notranslate"><span class="pre">--output-dir</span></code> if provided)</p></li>
+<li><p>generates <code class="docutils literal notranslate"><span class="pre">main.py</span></code> with a class inheriting from <code class="docutils literal notranslate"><span class="pre">AnomalyDetection</span></code>
+(<code class="docutils literal notranslate"><span class="pre">my_detector</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">MyDetector</span></code>)</p></li>
+<li><p>generates <code class="docutils literal notranslate"><span class="pre">example_config.json</span></code></p></li>
+<li><p>creates an <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> re-exporting the class</p></li>
+<li><p>inserts a placeholder for <code class="docutils literal notranslate"><span class="pre">__version__</span></code></p></li>
+</ul>
+<p>Useful options:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tsmadalg<span class="w"> </span>create<span class="w"> </span>my_detector<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--version<span class="w"> </span><span class="m">1</span>.0.0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--signals<span class="w"> </span>SIGNAL_1<span class="w"> </span>SIGNAL_2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--context-signals<span class="w"> </span>CTX_1<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--model-source<span class="w"> </span>scikit-learn<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--model-path<span class="w"> </span>model.joblib
+</pre></div>
+</div>
+<p>Supported options are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--version</span></code>: set the initial class version string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--signals</span></code>/<code class="docutils literal notranslate"><span class="pre">--target-signals</span></code>: pre-populate target signal names in
+<code class="docutils literal notranslate"><span class="pre">example_config.json</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--context-signals</span></code>: pre-populate context signal names</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--parameters</span></code>: initial <code class="docutils literal notranslate"><span class="pre">parameters</span></code> object, as a JSON string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--model-source</span></code>/<code class="docutils literal notranslate"><span class="pre">--model-path</span></code>: pre-populate the <code class="docutils literal notranslate"><span class="pre">model</span></code> section</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--anomaly-classes</span></code>: pre-populate <code class="docutils literal notranslate"><span class="pre">anomaly_classes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--artifacts</span></code>: pre-populate <code class="docutils literal notranslate"><span class="pre">artifacts</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--output-dir</span></code>: directory where the algorithm folder is created</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--overwrite</span></code>: replace files if the target directory already exists</p></li>
+</ul>
+<p>The CLI delegates to
+<code class="xref py py-func docutils literal notranslate"><span class="pre">tsmadalg.tools.templates.templates.generate_algorithm_template()</span></code>. That
+function is also available from Python if you prefer to automate template
+generation programmatically.</p>
+</section>
+<section id="tsmadalg-run">
+<h2><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">run</span></code><a class="headerlink" href="#tsmadalg-run" title="Link to this heading"></a></h2>
+<p>The CLI defines a <code class="docutils literal notranslate"><span class="pre">run</span></code> subcommand:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tsmadalg<span class="w"> </span>run<span class="w"> </span>my_algorithm<span class="w"> </span>--config<span class="w"> </span>path/to/config.json<span class="w"> </span>--input<span class="w"> </span>path/to/data.json
+</pre></div>
+</div>
+<p>It:</p>
+<ol class="arabic simple">
+<li><p>resolves the algorithm class through the registry</p></li>
+<li><p>instantiates it from <code class="docutils literal notranslate"><span class="pre">--config</span></code> and calls <code class="docutils literal notranslate"><span class="pre">setup()</span></code></p></li>
+<li><p>loads and validates the input payload from <code class="docutils literal notranslate"><span class="pre">--input</span></code> (the <code class="docutils literal notranslate"><span class="pre">time</span></code>/<code class="docutils literal notranslate"><span class="pre">values</span></code>
+format described in <a class="reference internal" href="configuration.html"><span class="doc">Configuration Files</span></a>)</p></li>
+<li><p>calls <code class="docutils literal notranslate"><span class="pre">detect()</span></code> on the resulting <a class="reference internal" href="../api/tsmadkit.html#tsmadkit.signals.SignalSet" title="tsmadkit.signals.SignalSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsmadkit.signals.SignalSet</span></code></a></p></li>
+<li><p>writes the resulting <code class="xref py py-class docutils literal notranslate"><span class="pre">tsmadkit.AnomalyResult</span></code> to JSON (<code class="docutils literal notranslate"><span class="pre">--output</span></code>,
+defaulting to <code class="docutils literal notranslate"><span class="pre">&lt;algo_name&gt;_result.json</span></code>)</p></li>
+</ol>
+<p>This is a convenient way to smoke-test an algorithm end to end without writing
+any Python.</p>
+</section>
+<section id="relationship-to-the-registry-api">
+<h2>Relationship to the Registry API<a class="headerlink" href="#relationship-to-the-registry-api" title="Link to this heading"></a></h2>
+<p>The CLI is a thin layer on top of the Python APIs in
+<a class="reference internal" href="../api/tsmadalg.html#module-tsmadalg.tools.registry" title="tsmadalg.tools.registry"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tsmadalg.tools.registry</span></code></a>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">list</span></code> corresponds to
+<a class="reference internal" href="../api/tsmadalg.html#tsmadalg.tools.registry.list_algorithms" title="tsmadalg.tools.registry.list_algorithms"><code class="xref py py-func docutils literal notranslate"><span class="pre">tsmadalg.tools.registry.list_algorithms()</span></code></a></p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">run</span></code> implementation starts by calling
+<a class="reference internal" href="../api/tsmadalg.html#tsmadalg.tools.registry.get_algorithm_class" title="tsmadalg.tools.registry.get_algorithm_class"><code class="xref py py-func docutils literal notranslate"><span class="pre">tsmadalg.tools.registry.get_algorithm_class()</span></code></a></p></li>
+</ul>
+<p>That means you can move easily between the shell and Python. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tsmadalg.tools.registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_algorithm_class</span><span class="p">,</span> <span class="n">list_algorithms</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">list_algorithms</span><span class="p">())</span>
+<span class="n">Detector</span> <span class="o">=</span> <span class="n">get_algorithm_class</span><span class="p">(</span><span class="s2">"mag_power_supply"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="recommended-workflow">
+<h2>Recommended Workflow<a class="headerlink" href="#recommended-workflow" title="Link to this heading"></a></h2>
+<p>During development, the CLI is most useful in this sequence:</p>
+<ol class="arabic simple">
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">create</span></code> to generate the skeleton.</p></li>
+<li><p>Implement the detector in <code class="docutils literal notranslate"><span class="pre">main.py</span></code> and update <code class="docutils literal notranslate"><span class="pre">example_config.json</span></code>.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">list</span></code> to confirm that discovery succeeds and to inspect the
+reported version, imports, and status.</p></li>
+</ol>
+<p>If you want the implementation details behind that workflow, see
+<a class="reference internal" href="create-algorithm.html"><span class="doc">Create a New Algorithm</span></a>. For the generated algorithm pages, see
+<a class="reference internal" href="../algorithms/index.html"><span class="doc">Algorithm Catalog</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="create-algorithm.html" class="btn btn-neutral float-left" title="Create a New Algorithm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../algorithms/index.html" class="btn btn-neutral float-right" title="Algorithm Catalog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025-2026, ITER Organization.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Versions</span>
+    v: dev
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl id="version-list">
+      <dt>Versions</dt>
+    </dl>
+  </div>
+</div>
+<script>
+  fetch("https://iterorganization.github.io/TSM-Anomaly-Detection/versions.json")
+    .then((response) => response.json())
+    .then((versions) => {
+      const list = document.getElementById("version-list");
+      for (const version of versions) {
+        const item = document.createElement("dd");
+        const link = document.createElement("a");
+        link.textContent = version.version;
+        link.href = version.url;
+        if (version.version === "dev") {
+          item.className = "rtd-current-item";
+        }
+        // Open the same page in the selected version, or its home page if the page does not exist there
+        link.addEventListener("click", async (event) => {
+          event.preventDefault();
+          const page = version.url + "guides/cli.html";
+          const response = await fetch(page, { method: "HEAD" }).catch(() => null);
+          window.location.href = response && response.ok ? page : version.url;
+        });
+        item.appendChild(link);
+        list.appendChild(item);
+      }
+    })
+    .catch(() => {});
+</script><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

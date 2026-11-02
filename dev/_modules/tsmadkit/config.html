@@ -1,0 +1,430 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tsmadkit.config &mdash; TSM Anomaly Detection Algorithms  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/treeview.css?v=f8e9195c" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/treeview.js?v=265ad9b8"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            TSM Anomaly Detection Algorithms
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#two-packages-one-workflow">Two Packages, One Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#repository-layout">Repository Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#your-first-runtime-flow">Your First Runtime Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#understanding-the-result-object">Understanding the Result Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#configuration-comes-first">Configuration Comes First</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#detectors-that-compare-against-history">Detectors That Compare Against History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#using-the-catalog">Using the Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../architecture.html">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../architecture.html#package-boundaries">Package Boundaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../architecture.html#end-to-end-runtime-flow">End-to-End Runtime Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../architecture.html#configuration-and-instance-state">Configuration and Instance State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../architecture.html#built-in-setup-behavior">Built-In Setup Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../architecture.html#detector-contracts">Detector Contracts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../architecture.html#discovery-and-registry">Discovery and Registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../architecture.html#algorithm-availability">Algorithm Availability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../architecture.html#generated-algorithm-pages">Generated Algorithm Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../architecture.html#how-everything-fits-together">How Everything Fits Together</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../citing.html">Citing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/configuration.html">Configuration Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/configuration.html#minimal-valid-configuration">Minimal Valid Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/configuration.html#schema-overview">Schema Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/configuration.html#role-of-each-entry">Role of Each Entry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/configuration.html#detailed-semantics">Detailed Semantics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/configuration.html#name"><code class="docutils literal notranslate"><span class="pre">name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/configuration.html#signals"><code class="docutils literal notranslate"><span class="pre">signals</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/configuration.html#parameters"><code class="docutils literal notranslate"><span class="pre">parameters</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/configuration.html#model"><code class="docutils literal notranslate"><span class="pre">model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/configuration.html#anomaly-classes"><code class="docutils literal notranslate"><span class="pre">anomaly_classes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/configuration.html#artifacts"><code class="docutils literal notranslate"><span class="pre">artifacts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/configuration.html#reference-state"><code class="docutils literal notranslate"><span class="pre">reference_state</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/configuration.html#complete-example">Complete Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/configuration.html#validation-helpers">Validation Helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/configuration.html#what-happens-after-loading">What Happens After Loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/configuration.html#configuration-and-documentation">Configuration and Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/configuration.html#related-runtime-input-shape">Related Runtime Input Shape</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/configuration.html#related-pages">Related Pages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/reference-state.html">Reference-State Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/reference-state.html#two-kinds-of-files">Two Kinds of Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/reference-state.html#how-history-and-cache-stay-in-sync">How History and Cache Stay in Sync</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/reference-state.html#starting-from-scratch">Starting From Scratch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/reference-state.html#using-the-cache-in-detect">Using the Cache in <code class="docutils literal notranslate"><span class="pre">detect()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/reference-state.html#where-to-go-next">Where to Go Next</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/create-algorithm.html">Create a New Algorithm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#required-package-layout">Required Package Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#naming-convention">Naming Convention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#minimal-single-input-example">Minimal Single-Input Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#matching-configuration">Matching Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#the-implementation-contract">The Implementation Contract</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/create-algorithm.html#constructor">Constructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/create-algorithm.html#setup"><code class="docutils literal notranslate"><span class="pre">setup()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/create-algorithm.html#detect"><code class="docutils literal notranslate"><span class="pre">detect()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#populate-anomalyresult-deliberately">Populate <code class="docutils literal notranslate"><span class="pre">AnomalyResult</span></code> Deliberately</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#use-models-carefully">Use Models Carefully</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#reference-state-example-pattern">Reference-State Example Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#testing-discovery">Testing Discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#using-the-template-generator">Using the Template Generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#checklist">Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#related-pages">Related Pages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/cli.html"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span></code> Command-Line Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/cli.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/cli.html#tsmadalg-list"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">list</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/cli.html#tsmadalg-create"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">create</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/cli.html#tsmadalg-run"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">run</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/cli.html#relationship-to-the-registry-api">Relationship to the Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/cli.html#recommended-workflow">Recommended Workflow</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Algorithms</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../algorithms/index.html">Algorithm Catalog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../algorithms/index.html#what-these-pages-contain">What These Pages Contain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../algorithms/index.html#how-to-interpret-the-catalog">How to Interpret the Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../algorithms/index.html#available-algorithms">Available Algorithms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../algorithms/generated/ech_collector.html">ech_collector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../algorithms/generated/mag_power_supply.html">mag_power_supply</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/tsmadkit.html">tsmadkit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/tsmadkit.html#module-tsmadkit">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/tsmadkit.html#module-tsmadkit.anomaly_detection">Core modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.anomaly_detection.AnomalyDetection"><code class="docutils literal notranslate"><span class="pre">AnomalyDetection</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.anomaly_result.AnomalyResult"><code class="docutils literal notranslate"><span class="pre">AnomalyResult</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.config.SignalsConfig"><code class="docutils literal notranslate"><span class="pre">SignalsConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.config.ModelConfig"><code class="docutils literal notranslate"><span class="pre">ModelConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.config.ReferenceStateConfig"><code class="docutils literal notranslate"><span class="pre">ReferenceStateConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.config.AlgorithmConfig"><code class="docutils literal notranslate"><span class="pre">AlgorithmConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.signals.SignalSpec"><code class="docutils literal notranslate"><span class="pre">SignalSpec</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.signals.SignalSet"><code class="docutils literal notranslate"><span class="pre">SignalSet</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.data.DataDict"><code class="docutils literal notranslate"><span class="pre">DataDict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.io.read_json"><code class="docutils literal notranslate"><span class="pre">read_json()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.io.write_json"><code class="docutils literal notranslate"><span class="pre">write_json()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.io.read_json_input_data"><code class="docutils literal notranslate"><span class="pre">read_json_input_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.io.write_json_input_data"><code class="docutils literal notranslate"><span class="pre">write_json_input_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.io.read_hdf5_input_data"><code class="docutils literal notranslate"><span class="pre">read_hdf5_input_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.io.write_hdf5_input_data"><code class="docutils literal notranslate"><span class="pre">write_hdf5_input_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.state.file_sha256"><code class="docutils literal notranslate"><span class="pre">file_sha256()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.state.StateFileConfig"><code class="docutils literal notranslate"><span class="pre">StateFileConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.state.CacheFileConfig"><code class="docutils literal notranslate"><span class="pre">CacheFileConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.state.ReferenceStateFileConfig"><code class="docutils literal notranslate"><span class="pre">ReferenceStateFileConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.state.State"><code class="docutils literal notranslate"><span class="pre">State</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.state.ManifestState"><code class="docutils literal notranslate"><span class="pre">ManifestState</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.state.HistoryState"><code class="docutils literal notranslate"><span class="pre">HistoryState</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.state.CacheState"><code class="docutils literal notranslate"><span class="pre">CacheState</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.state.ReferenceState"><code class="docutils literal notranslate"><span class="pre">ReferenceState</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.state.stack_cache_rows"><code class="docutils literal notranslate"><span class="pre">stack_cache_rows()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.preprocessing.get_above_threshold_window"><code class="docutils literal notranslate"><span class="pre">get_above_threshold_window()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/tsmadalg.html">tsmadalg</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/tsmadalg.html#module-tsmadalg">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/tsmadalg.html#module-tsmadalg.tools.registry">Registry and CLI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadalg.html#tsmadalg.tools.registry.list_algorithms"><code class="docutils literal notranslate"><span class="pre">list_algorithms()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadalg.html#tsmadalg.tools.registry.get_algorithm_class"><code class="docutils literal notranslate"><span class="pre">get_algorithm_class()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/tsmadalg.html#templates">Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/tsmadalg.html#module-tsmadalg.algorithms">Algorithm discovery</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadalg.html#algorithm-catalog">Algorithm catalog</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TSM Anomaly Detection Algorithms</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">tsmadkit.config</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for tsmadkit.config</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""</span>
+<span class="sd">Configuration schema definitions for anomaly detection algorithms.</span>
+
+<span class="sd">This module defines Pydantic models that represent the expected structure of the configuration</span>
+<span class="sd">files used to initialize anomaly detection algorithms.</span>
+<span class="sd">"""</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">hashlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Literal</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">model_validator</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">tsmadkit.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">NonEmptyStr</span>
+
+<div class="viewcode-block" id="SignalsConfig">
+<a class="viewcode-back" href="../../api/tsmadkit.html#tsmadkit.config.SignalsConfig">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SignalsConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Configuration schema for signals specification in anomaly detection algorithms.</span>
+<span class="sd">    </span>
+<span class="sd">    This class defines the expected structure of the "signals" section in the algorithm </span>
+<span class="sd">    configuration file. It includes fields for target signals and optional context </span>
+<span class="sd">    signals, with validation to ensure uniqueness.</span>
+<span class="sd">    """</span>
+    <span class="n">model_config</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">(</span><span class="n">extra</span><span class="o">=</span><span class="s2">"forbid"</span><span class="p">)</span>
+
+    <span class="n">targets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">NonEmptyStr</span><span class="p">]</span>
+    <span class="n">context</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">NonEmptyStr</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SignalsConfig.verify_unique_names">
+<a class="viewcode-back" href="../../api/tsmadkit.html#tsmadkit.config.SignalsConfig.verify_unique_names">[docs]</a>
+    <span class="nd">@model_validator</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">"after"</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">verify_unique_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"targets must be unique"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"context must be unique"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="ModelConfig">
+<a class="viewcode-back" href="../../api/tsmadkit.html#tsmadkit.config.ModelConfig">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ModelConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Configuration schema for model loading in anomaly detection algorithms.</span>
+
+<span class="sd">    This class defines the expected structure of the "model" configuration section in</span>
+<span class="sd">    the algorithm configuration file. It includes fields for the source of the model</span>
+<span class="sd">    and the path to the model file</span>
+<span class="sd">    """</span>
+    <span class="n">model_config</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">(</span><span class="n">extra</span><span class="o">=</span><span class="s2">"forbid"</span><span class="p">)</span>
+
+    <span class="n">source</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">"scikit-learn"</span><span class="p">,</span> <span class="s2">"keras"</span><span class="p">,</span> <span class="s2">"tensorflow"</span><span class="p">,</span> <span class="s2">"custom"</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="n">path</span><span class="p">:</span> <span class="n">NonEmptyStr</span></div>
+
+
+
+<div class="viewcode-block" id="ReferenceStateConfig">
+<a class="viewcode-back" href="../../api/tsmadkit.html#tsmadkit.config.ReferenceStateConfig">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ReferenceStateConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Configuration for optional reference state tracking in anomaly detection algorithms.</span>
+
+<span class="sd">    This class defines the expected structure of the "reference_state" section in</span>
+<span class="sd">    the algorithm configuration file. It includes fields for the path to the</span>
+<span class="sd">    reference state file and optional state checking policy.</span>
+<span class="sd">    """</span>
+    <span class="n">model_config</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">(</span><span class="n">extra</span><span class="o">=</span><span class="s2">"forbid"</span><span class="p">)</span>
+
+    <span class="n">path</span><span class="p">:</span> <span class="n">NonEmptyStr</span>
+    <span class="n">check</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">"fast"</span><span class="p">,</span> <span class="s2">"full"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"fast"</span></div>
+
+
+
+<div class="viewcode-block" id="AlgorithmConfig">
+<a class="viewcode-back" href="../../api/tsmadkit.html#tsmadkit.config.AlgorithmConfig">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AlgorithmConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Configuration schema for anomaly detection algorithms.</span>
+<span class="sd">    </span>
+<span class="sd">    This class defines the expected structure of the configuration file that anomaly</span>
+<span class="sd">    detection algorithms should adhere to. It includes fields for algorithm name,</span>
+<span class="sd">    parameters, model configuration, signals specification, artifacts, anomaly</span>
+<span class="sd">    classes, and reference state configuration.</span>
+<span class="sd">    """</span>
+    <span class="n">model_config</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">(</span><span class="n">extra</span><span class="o">=</span><span class="s2">"forbid"</span><span class="p">)</span>
+
+    <span class="n">name</span><span class="p">:</span> <span class="n">NonEmptyStr</span>
+    <span class="n">parameters</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">ModelConfig</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">signals</span><span class="p">:</span> <span class="n">SignalsConfig</span>
+    <span class="n">artifacts</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">NonEmptyStr</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">anomaly_classes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">NonEmptyStr</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">reference_state</span><span class="p">:</span> <span class="n">ReferenceStateConfig</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="AlgorithmConfig.verify_unique_values">
+<a class="viewcode-back" href="../../api/tsmadkit.html#tsmadkit.config.AlgorithmConfig.verify_unique_values">[docs]</a>
+    <span class="nd">@model_validator</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">"after"</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">verify_unique_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">artifacts</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">artifacts</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">artifacts</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"artifacts must be unique"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">anomaly_classes</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">anomaly_classes</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">anomaly_classes</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"anomaly_classes must be unique"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="AlgorithmConfig.sha256">
+<a class="viewcode-back" href="../../api/tsmadkit.html#tsmadkit.config.AlgorithmConfig.sha256">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">sha256</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Compute the SHA-256 hash of the configuration content.</span>
+
+<span class="sd">        The hash is computed from a canonical JSON serialization of the</span>
+<span class="sd">        validated configuration, so it does not depend on whether the</span>
+<span class="sd">        configuration was read from a file or passed as a dictionary, nor on</span>
+<span class="sd">        key order or formatting. The ``reference_state`` section is excluded</span>
+<span class="sd">        because it describes how to check the reference state, not what the</span>
+<span class="sd">        algorithm computes.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            Hexadecimal SHA-256 digest of the configuration.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        pydantic_core.PydanticSerializationError</span>
+<span class="sd">            If the configuration contains values that are not JSON serializable.</span>
+<span class="sd">        """</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">"json"</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="s2">"reference_state"</span><span class="p">})</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">separators</span><span class="o">=</span><span class="p">(</span><span class="s2">","</span><span class="p">,</span> <span class="s2">":"</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025-2026, ITER Organization.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Versions</span>
+    v: dev
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl id="version-list">
+      <dt>Versions</dt>
+    </dl>
+  </div>
+</div>
+<script>
+  fetch("https://iterorganization.github.io/TSM-Anomaly-Detection/versions.json")
+    .then((response) => response.json())
+    .then((versions) => {
+      const list = document.getElementById("version-list");
+      for (const version of versions) {
+        const item = document.createElement("dd");
+        const link = document.createElement("a");
+        link.textContent = version.version;
+        link.href = version.url;
+        if (version.version === "dev") {
+          item.className = "rtd-current-item";
+        }
+        // Open the same page in the selected version, or its home page if the page does not exist there
+        link.addEventListener("click", async (event) => {
+          event.preventDefault();
+          const page = version.url + "_modules/tsmadkit/config.html";
+          const response = await fetch(page, { method: "HEAD" }).catch(() => null);
+          window.location.href = response && response.ok ? page : version.url;
+        });
+        item.appendChild(link);
+        list.appendChild(item);
+      }
+    })
+    .catch(() => {});
+</script><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

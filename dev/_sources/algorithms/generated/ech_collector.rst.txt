@@ -1,0 +1,50 @@
+ech_collector
+=============
+
+.. note::
+
+   This page is generated automatically from the ``ech_collector`` algorithm package [#f1]_.
+
+
+
+Description [#f2]_
+------------------
+
+.. include:: ../../../../src/tsmadalg/tsmadalg/algorithms/ech_collector/README.md
+   :parser: myst_parser.sphinx_
+
+
+------------
+            
+Example configuration [#f3]_
+----------------------------
+
+.. literalinclude:: ../../../../src/tsmadalg/tsmadalg/algorithms/ech_collector/example_config.json
+   :language: json
+
+
+------------
+        
+Implementation
+--------------
+
+.. automodule:: tsmadalg.algorithms.ech_collector.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+------------
+
+References
+----------
+
+.. bibliography::
+   :filter: docname in docnames
+
+
+.. rubric:: Footnotes
+
+.. [#f1] Source package: ``tsmadalg.algorithms.ech_collector``
+.. [#f2] This section is generated from ``src/tsmadalg/tsmadalg/algorithms/ech_collector/README.md``.
+.. [#f3] This section is generated from ``src/tsmadalg/tsmadalg/algorithms/ech_collector/example_config.json``.
