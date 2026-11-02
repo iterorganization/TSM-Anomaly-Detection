@@ -1,0 +1,41 @@
+mag_power_supply
+================
+
+.. note::
+
+   This page is generated automatically from the ``mag_power_supply`` algorithm package [#f1]_.
+
+
+
+Description [#f2]_
+------------------
+
+.. include:: ../../../../src/tsmadalg/tsmadalg/algorithms/mag_power_supply/README.md
+   :parser: myst_parser.sphinx_
+
+
+------------
+            
+Example configuration [#f3]_
+----------------------------
+
+.. literalinclude:: ../../../../src/tsmadalg/tsmadalg/algorithms/mag_power_supply/example_config.json
+   :language: json
+
+
+------------
+        
+Implementation
+--------------
+
+.. automodule:: tsmadalg.algorithms.mag_power_supply.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+.. rubric:: Footnotes
+
+.. [#f1] Source package: ``tsmadalg.algorithms.mag_power_supply``
+.. [#f2] This section is generated from ``src/tsmadalg/tsmadalg/algorithms/mag_power_supply/README.md``.
+.. [#f3] This section is generated from ``src/tsmadalg/tsmadalg/algorithms/mag_power_supply/example_config.json``.

@@ -1,0 +1,596 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mag_power_supply &mdash; TSM Anomaly Detection Algorithms  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/treeview.css?v=f8e9195c" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/treeview.js?v=265ad9b8"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="tsmadkit" href="../../api/tsmadkit.html" />
+    <link rel="prev" title="ech_collector" href="ech_collector.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            TSM Anomaly Detection Algorithms
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#two-packages-one-workflow">Two Packages, One Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#repository-layout">Repository Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#your-first-runtime-flow">Your First Runtime Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#understanding-the-result-object">Understanding the Result Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#configuration-comes-first">Configuration Comes First</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#detectors-that-compare-against-history">Detectors That Compare Against History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#using-the-catalog">Using the Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../architecture.html">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../architecture.html#package-boundaries">Package Boundaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../architecture.html#end-to-end-runtime-flow">End-to-End Runtime Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../architecture.html#configuration-and-instance-state">Configuration and Instance State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../architecture.html#built-in-setup-behavior">Built-In Setup Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../architecture.html#detector-contracts">Detector Contracts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../architecture.html#discovery-and-registry">Discovery and Registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../architecture.html#algorithm-availability">Algorithm Availability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../architecture.html#generated-algorithm-pages">Generated Algorithm Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../architecture.html#how-everything-fits-together">How Everything Fits Together</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../citing.html">Citing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/configuration.html">Configuration Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/configuration.html#minimal-valid-configuration">Minimal Valid Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/configuration.html#schema-overview">Schema Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/configuration.html#role-of-each-entry">Role of Each Entry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/configuration.html#detailed-semantics">Detailed Semantics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/configuration.html#name"><code class="docutils literal notranslate"><span class="pre">name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/configuration.html#signals"><code class="docutils literal notranslate"><span class="pre">signals</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/configuration.html#parameters"><code class="docutils literal notranslate"><span class="pre">parameters</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/configuration.html#model"><code class="docutils literal notranslate"><span class="pre">model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/configuration.html#anomaly-classes"><code class="docutils literal notranslate"><span class="pre">anomaly_classes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/configuration.html#artifacts"><code class="docutils literal notranslate"><span class="pre">artifacts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/configuration.html#reference-state"><code class="docutils literal notranslate"><span class="pre">reference_state</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/configuration.html#complete-example">Complete Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/configuration.html#validation-helpers">Validation Helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/configuration.html#what-happens-after-loading">What Happens After Loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/configuration.html#configuration-and-documentation">Configuration and Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/configuration.html#related-runtime-input-shape">Related Runtime Input Shape</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/configuration.html#related-pages">Related Pages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/reference-state.html">Reference-State Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/reference-state.html#two-kinds-of-files">Two Kinds of Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/reference-state.html#how-history-and-cache-stay-in-sync">How History and Cache Stay in Sync</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/reference-state.html#starting-from-scratch">Starting From Scratch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/reference-state.html#using-the-cache-in-detect">Using the Cache in <code class="docutils literal notranslate"><span class="pre">detect()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/reference-state.html#where-to-go-next">Where to Go Next</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/create-algorithm.html">Create a New Algorithm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#required-package-layout">Required Package Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#naming-convention">Naming Convention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#minimal-single-input-example">Minimal Single-Input Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#matching-configuration">Matching Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#the-implementation-contract">The Implementation Contract</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/create-algorithm.html#constructor">Constructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/create-algorithm.html#setup"><code class="docutils literal notranslate"><span class="pre">setup()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/create-algorithm.html#detect"><code class="docutils literal notranslate"><span class="pre">detect()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#populate-anomalyresult-deliberately">Populate <code class="docutils literal notranslate"><span class="pre">AnomalyResult</span></code> Deliberately</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#use-models-carefully">Use Models Carefully</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#reference-state-example-pattern">Reference-State Example Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#testing-discovery">Testing Discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#using-the-template-generator">Using the Template Generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#checklist">Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/create-algorithm.html#related-pages">Related Pages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/cli.html"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span></code> Command-Line Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/cli.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/cli.html#tsmadalg-list"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">list</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/cli.html#tsmadalg-create"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">create</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/cli.html#tsmadalg-run"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">run</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/cli.html#relationship-to-the-registry-api">Relationship to the Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/cli.html#recommended-workflow">Recommended Workflow</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Algorithms</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Algorithm Catalog</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#what-these-pages-contain">What These Pages Contain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#how-to-interpret-the-catalog">How to Interpret the Catalog</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#available-algorithms">Available Algorithms</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ech_collector.html">ech_collector</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">mag_power_supply</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/tsmadkit.html">tsmadkit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/tsmadkit.html#module-tsmadkit">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/tsmadkit.html#module-tsmadkit.anomaly_detection">Core modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.anomaly_detection.AnomalyDetection"><code class="docutils literal notranslate"><span class="pre">AnomalyDetection</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.anomaly_result.AnomalyResult"><code class="docutils literal notranslate"><span class="pre">AnomalyResult</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.config.SignalsConfig"><code class="docutils literal notranslate"><span class="pre">SignalsConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.config.ModelConfig"><code class="docutils literal notranslate"><span class="pre">ModelConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.config.ReferenceStateConfig"><code class="docutils literal notranslate"><span class="pre">ReferenceStateConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.config.AlgorithmConfig"><code class="docutils literal notranslate"><span class="pre">AlgorithmConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.signals.SignalSpec"><code class="docutils literal notranslate"><span class="pre">SignalSpec</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.signals.SignalSet"><code class="docutils literal notranslate"><span class="pre">SignalSet</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.data.DataDict"><code class="docutils literal notranslate"><span class="pre">DataDict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.io.read_json"><code class="docutils literal notranslate"><span class="pre">read_json()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.io.write_json"><code class="docutils literal notranslate"><span class="pre">write_json()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.io.read_json_input_data"><code class="docutils literal notranslate"><span class="pre">read_json_input_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.io.write_json_input_data"><code class="docutils literal notranslate"><span class="pre">write_json_input_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.io.read_hdf5_input_data"><code class="docutils literal notranslate"><span class="pre">read_hdf5_input_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.io.write_hdf5_input_data"><code class="docutils literal notranslate"><span class="pre">write_hdf5_input_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.state.file_sha256"><code class="docutils literal notranslate"><span class="pre">file_sha256()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.state.StateFileConfig"><code class="docutils literal notranslate"><span class="pre">StateFileConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.state.CacheFileConfig"><code class="docutils literal notranslate"><span class="pre">CacheFileConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.state.ReferenceStateFileConfig"><code class="docutils literal notranslate"><span class="pre">ReferenceStateFileConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.state.State"><code class="docutils literal notranslate"><span class="pre">State</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.state.ManifestState"><code class="docutils literal notranslate"><span class="pre">ManifestState</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.state.HistoryState"><code class="docutils literal notranslate"><span class="pre">HistoryState</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.state.CacheState"><code class="docutils literal notranslate"><span class="pre">CacheState</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.state.ReferenceState"><code class="docutils literal notranslate"><span class="pre">ReferenceState</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.state.stack_cache_rows"><code class="docutils literal notranslate"><span class="pre">stack_cache_rows()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.preprocessing.get_above_threshold_window"><code class="docutils literal notranslate"><span class="pre">get_above_threshold_window()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/tsmadalg.html">tsmadalg</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/tsmadalg.html#module-tsmadalg">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/tsmadalg.html#module-tsmadalg.tools.registry">Registry and CLI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadalg.html#tsmadalg.tools.registry.list_algorithms"><code class="docutils literal notranslate"><span class="pre">list_algorithms()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadalg.html#tsmadalg.tools.registry.get_algorithm_class"><code class="docutils literal notranslate"><span class="pre">get_algorithm_class()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/tsmadalg.html#templates">Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/tsmadalg.html#module-tsmadalg.algorithms">Algorithm discovery</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/tsmadalg.html#algorithm-catalog">Algorithm catalog</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TSM Anomaly Detection Algorithms</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Algorithm Catalog</a></li>
+      <li class="breadcrumb-item active">mag_power_supply</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/algorithms/generated/mag_power_supply.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mag-power-supply">
+<h1>mag_power_supply<a class="headerlink" href="#mag-power-supply" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This page is generated automatically from the <code class="docutils literal notranslate"><span class="pre">mag_power_supply</span></code> algorithm package <a class="footnote-reference brackets" href="#f1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+</div>
+<section id="description">
+<h2>Description <a class="footnote-reference brackets" href="#f2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a><a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<section id="magnet-power-supply-anomaly-detection">
+<h3>Magnet power-supply anomaly detection<a class="headerlink" href="#magnet-power-supply-anomaly-detection" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">mag_power_supply</span></code> is a model-informed detector for time-localized monitoring of ITER magnet power-supply voltages.
+It uses a conditional invertible neural network (CINN) to estimate how likely each measured-voltage window is under the current actuator commands and the voltages predicted by a physics-based model.
+This allows deviations to be assessed against regime-dependent expected behavior rather than with a fixed residual limit alone.</p>
+<section id="inputs">
+<h4>Inputs<a class="headerlink" href="#inputs" title="Link to this heading"></a></h4>
+<p>Each call processes one synchronized window containing 12 magnet power supplies.
+The packaged checkpoint expects exactly 10 samples per signal.</p>
+<ul class="simple">
+<li><p>The 12 target signals are the measured power-supply voltages.</p></li>
+<li><p>The first 12 context signals are the corresponding actuator-command windows.</p></li>
+<li><p>The next 12 context signals are the corresponding simulated-voltage windows.</p></li>
+<li><p>Commands, simulated voltages, and measured voltages must use the same power-supply order shown in the configuration and share one time grid.</p></li>
+</ul>
+<p>The context ordering is part of the current implementation contract because the detector selects the two context groups by position.
+For continuous monitoring, the caller should invoke the detector on successive windows of the expected length.</p>
+</section>
+<section id="how-it-works">
+<h4>How it works<a class="headerlink" href="#how-it-works" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>The detector loads the pretrained CINN and the normalization values used during training.</p></li>
+<li><p>For each power supply, the model conditions on its recent command values, its simulated-voltage window, and the identity of the supply.</p></li>
+<li><p>The CINN maps the measured-voltage window to a standard-normal latent space and evaluates its negative log-likelihood (NLL), including the transformation Jacobian.</p></li>
+<li><p>The NLL for each supply is compared with the threshold at the same position in <code class="docutils literal notranslate"><span class="pre">nll_thresholds</span></code>.</p></li>
+<li><p>The window is anomalous when at least one supply exceeds its threshold.</p></li>
+</ol>
+<p>Higher NLL means that a measured-voltage window is less likely under the operating conditions learned by the model.
+The implementation uses the CINN’s forward likelihood for detection; it does not return reconstructed voltage traces or uncertainty bands.</p>
+</section>
+<section id="configuration-notes">
+<h4>Configuration notes<a class="headerlink" href="#configuration-notes" title="Link to this heading"></a></h4>
+<p>The example configuration (<code class="docutils literal notranslate"><span class="pre">example_config.json</span></code>) defines the required ordering of the 12 command signals, 12 simulated voltages, and 12 measured voltages.
+The most important settings and resources are:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting or resource</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">model.path</span></code></p></td>
+<td><p>Points to the trained cINN checkpoint (e.g. <code class="docutils literal notranslate"><span class="pre">cinn.ckpt</span></code>) loaded during <code class="docutils literal notranslate"><span class="pre">setup()</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">artifacts</span></code></p></td>
+<td><p>Lists the normalization constants file (e.g. <code class="docutils literal notranslate"><span class="pre">norms.npz</span></code>) the checkpoint was trained with.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">device</span></code></p></td>
+<td><p>Selects the PyTorch inference device; the example configuration uses <code class="docutils literal notranslate"><span class="pre">cpu</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nll_thresholds</span></code></p></td>
+<td><p>Contains one decision threshold per target, in exactly the same order as <code class="docutils literal notranslate"><span class="pre">signals.targets</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>A trained cINN checkpoint and its normalization constants are currently required to run the algorithm, and must be available before calling <code class="docutils literal notranslate"><span class="pre">setup()</span></code>.
+They are not shipped with this package.
+The checkpoint stores the normalization constants file as a relative path, so the process must be launched with that file available at the checkpoint’s stored path.</p>
+<blockquote>
+<div><p><strong>Warning:</strong> <code class="docutils literal notranslate"><span class="pre">tsmadalg</span></code> cannot train the cINN yet.
+A planned refactoring of the <code class="docutils literal notranslate"><span class="pre">mag_ps_cinn</span></code> package will allow (re)training the cINN directly from <code class="docutils literal notranslate"><span class="pre">tsmadalg</span></code>.
+Thresholds are model- and signal-specific and should be calibrated on representative nominal and anomalous windows rather than interpreted as probabilities.</p>
+</div></blockquote>
+</section>
+<section id="running-the-detector">
+<h4>Running the detector<a class="headerlink" href="#running-the-detector" title="Link to this heading"></a></h4>
+<p>Instantiate the class with a configuration file, call <code class="docutils literal notranslate"><span class="pre">setup()</span></code> once to load the CINN, then call <code class="docutils literal notranslate"><span class="pre">detect()</span></code> for each input window:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">tsmadalg.algorithms.mag_power_supply</span><span class="w"> </span><span class="kn">import</span> <span class="n">MAGPowerSupply</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tsmadkit.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_json_input_data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tsmadkit.signals</span><span class="w"> </span><span class="kn">import</span> <span class="n">SignalSet</span>
+
+<span class="n">detector</span> <span class="o">=</span> <span class="n">MAGPowerSupply</span><span class="p">(</span><span class="s2">"config.json"</span><span class="p">)</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="n">read_json_input_data</span><span class="p">(</span><span class="s2">"window.json"</span><span class="p">)</span>
+<span class="n">signals</span> <span class="o">=</span> <span class="n">SignalSet</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">detector</span><span class="o">.</span><span class="n">signal_spec</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">signals</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">float32</span></code> input matches the packaged PyTorch checkpoint.
+Relative paths in the configuration are resolved from the directory containing the configuration file.</p>
+</section>
+<section id="result-and-interpretation">
+<h4>Result and interpretation<a class="headerlink" href="#result-and-interpretation" title="Link to this heading"></a></h4>
+<p>The returned <code class="docutils literal notranslate"><span class="pre">AnomalyResult</span></code> provides:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">is_anomaly</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code> when at least one per-supply NLL exceeds its configured threshold.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scores[&quot;max_nll&quot;]</span></code></p></td>
+<td><p>The largest NLL across the 12 monitored supplies in the input window.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sources</span></code></p></td>
+<td><p>The measured-voltage signal names whose NLL values exceeded their respective thresholds, or <code class="docutils literal notranslate"><span class="pre">None</span></code> for a normal window.</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">max_nll</span></code> is a continuous summary of the least-likely channel, while <code class="docutils literal notranslate"><span class="pre">is_anomaly</span></code> and <code class="docutils literal notranslate"><span class="pre">sources</span></code> reflect the configured per-channel thresholds.
+The result identifies affected power supplies at window resolution, but it does not identify an exact sample within the window or classify the underlying fault.
+It should be treated as a model-consistency warning and reviewed together with the measured signals, simulated signals, and operating context.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="example-configuration">
+<h2>Example configuration <a class="footnote-reference brackets" href="#f3" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a><a class="headerlink" href="#example-configuration" title="Link to this heading"></a></h2>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mag_power_supply_example"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cinn.ckpt"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"device"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpu"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"nll_thresholds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="mf">-4.0</span><span class="p">,</span>
+<span class="w">            </span><span class="mf">-4.0</span><span class="p">,</span>
+<span class="w">            </span><span class="mf">-4.0</span><span class="p">,</span>
+<span class="w">            </span><span class="mf">-4.0</span><span class="p">,</span>
+<span class="w">            </span><span class="mf">-4.0</span><span class="p">,</span>
+<span class="w">            </span><span class="mf">-4.0</span><span class="p">,</span>
+<span class="w">            </span><span class="mf">-4.0</span><span class="p">,</span>
+<span class="w">            </span><span class="mf">-4.0</span><span class="p">,</span>
+<span class="w">            </span><span class="mf">-4.0</span><span class="p">,</span>
+<span class="w">            </span><span class="mf">-4.0</span><span class="p">,</span>
+<span class="w">            </span><span class="mf">-4.0</span><span class="p">,</span>
+<span class="w">            </span><span class="mf">-4.0</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"artifacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"norms.npz"</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"signals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"context"</span><span class="p">:[</span>
+<span class="w">            </span><span class="s2">"CS3U_in"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"CS2U_in"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"CS1_in"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"CS2L_in"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"CS3L_in"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"PF1_in"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"PF2_in"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"PF3_in"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"PF4_in"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"PF5_in"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"PF6_in"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"VS1_in"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"CS3U_sim"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"CS2U_sim"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"CS1_sim"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"CS2L_sim"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"CS3L_sim"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"PF1_sim"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"PF2_sim"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"PF3_sim"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"PF4_sim"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"PF5_sim"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"PF6_sim"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"VS1_sim"</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"targets"</span><span class="p">:[</span>
+<span class="w">            </span><span class="s2">"CS3U_out"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"CS2U_out"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"CS1_out"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"CS2L_out"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"CS3L_out"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"PF1_out"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"PF2_out"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"PF3_out"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"PF4_out"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"PF5_out"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"PF6_out"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"VS1_out"</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="module-tsmadalg.algorithms.mag_power_supply.main">
+<span id="implementation"></span><h2>Implementation<a class="headerlink" href="#module-tsmadalg.algorithms.mag_power_supply.main" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tsmadalg.algorithms.mag_power_supply.main.MAGPowerSupply">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">tsmadalg.algorithms.mag_power_supply.main.</span></span><span class="sig-name descname"><span class="pre">MAGPowerSupply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">configuration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.15)"><span class="pre">Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><span class="pre">dict</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tsmadalg/algorithms/mag_power_supply/main.html#MAGPowerSupply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsmadalg.algorithms.mag_power_supply.main.MAGPowerSupply" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.anomaly_detection.AnomalyDetection" title="tsmadkit.anomaly_detection.AnomalyDetection"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnomalyDetection</span></code></a></p>
+<p>Magnet power-supply anomaly detection with a conditional invertible neural network (cINN).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>configuration</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><em>str</em></a><em> | </em><em>Path</em><em> | </em><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><em>dict</em></a>) – Configuration dictionary or path to a JSON file containing the
+algorithm configuration. Relative paths within a configuration file
+are resolved from the directory containing that file. Relative paths
+within a configuration dictionary are resolved from the current
+working directory. Absolute paths are used unchanged in both cases.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The configuration should have the following format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"algorithm-name"</span><span class="p">,</span>
+    <span class="s2">"parameters"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"threshold"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">},</span>
+    <span class="s2">"model"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"source"</span><span class="p">:</span> <span class="s2">"scikit-learn"</span><span class="p">,</span>
+        <span class="s2">"path"</span><span class="p">:</span> <span class="s2">"model.joblib"</span>
+    <span class="p">},</span>
+    <span class="s2">"signals"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"targets"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"signal-a"</span><span class="p">],</span>
+        <span class="s2">"context"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"signal-b"</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">"artifacts"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"additional-data.npz"</span><span class="p">],</span>
+    <span class="s2">"anomaly_classes"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"anomaly"</span><span class="p">],</span>
+    <span class="s2">"reference_state"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"path"</span><span class="p">:</span> <span class="s2">"reference_state.json"</span><span class="p">,</span>
+        <span class="s2">"check"</span><span class="p">:</span> <span class="s2">"fast"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>All nullable top-level fields are optional: <code class="docutils literal notranslate"><span class="pre">model</span></code>, <code class="docutils literal notranslate"><span class="pre">parameters</span></code>,
+<code class="docutils literal notranslate"><span class="pre">artifacts</span></code>, <code class="docutils literal notranslate"><span class="pre">anomaly_classes</span></code>, and <code class="docutils literal notranslate"><span class="pre">reference_state</span></code>.
+<code class="docutils literal notranslate"><span class="pre">signals.context</span></code> may also be omitted.</p>
+<p>The ‘name’ key in the configuration is a string that identifies the algorithm.
+The ‘parameters’ key in the configuration is a dictionary where each item becomes an attribute of the instance.
+The configuration content is hashed into <code class="docutils literal notranslate"><span class="pre">config_hash</span></code>, which is the same
+whether the configuration comes from a file or a dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/builtins/exceptions.html#TypeError" title="(in Python v3.15)"><strong>TypeError</strong></a> – If the subclass does not define <code class="docutils literal notranslate"><span class="pre">__version__</span></code> as a non-empty string.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsmadalg.algorithms.mag_power_supply.main.MAGPowerSupply.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../_modules/tsmadalg/algorithms/mag_power_supply/main.html#MAGPowerSupply.setup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsmadalg.algorithms.mag_power_supply.main.MAGPowerSupply.setup" title="Link to this definition"></a></dt>
+<dd><p>Load the model from a checkpoint (.ckpt), set it in eval mode
+on the configured device, and define some useful loop-independent
+constants to be used in the <cite>detect</cite> method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tsmadalg.algorithms.mag_power_supply.main.MAGPowerSupply.detect">
+<span class="sig-name descname"><span class="pre">detect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.signals.SignalSet" title="tsmadkit.signals.SignalSet"><span class="pre">SignalSet</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.anomaly_result.AnomalyResult" title="tsmadkit.anomaly_result.AnomalyResult"><span class="pre">AnomalyResult</span></a></span></span><a class="reference internal" href="../../_modules/tsmadalg/algorithms/mag_power_supply/main.html#MAGPowerSupply.detect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsmadalg.algorithms.mag_power_supply.main.MAGPowerSupply.detect" title="Link to this definition"></a></dt>
+<dd><p>Detect anomalous magnet power-supply voltage windows via a
+conditional invertible neural network (CINN).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.signals.SignalSet" title="tsmadkit.signals.SignalSet"><em>SignalSet</em></a>) – Synchronized window of actuator commands, simulated voltages, and
+measured voltages sharing one time grid.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Detection result with <code class="docutils literal notranslate"><span class="pre">is_anomaly</span></code> set when at least one target
+signal’s NLL exceeds its configured threshold,
+<code class="docutils literal notranslate"><span class="pre">scores[&quot;max_nll&quot;]</span></code> containing the largest NLL across target
+signals, and <code class="docutils literal notranslate"><span class="pre">sources</span></code> listing the target signals whose
+threshold was exceeded (<code class="docutils literal notranslate"><span class="pre">None</span></code> when none were).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../api/tsmadkit.html#tsmadkit.anomaly_result.AnomalyResult" title="tsmadkit.anomaly_result.AnomalyResult">AnomalyResult</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Footnotes</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Source package: <code class="docutils literal notranslate"><span class="pre">tsmadalg.algorithms.mag_power_supply</span></code></p>
+</aside>
+<aside class="footnote brackets" id="f2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>This section is generated from <code class="docutils literal notranslate"><span class="pre">src/tsmadalg/tsmadalg/algorithms/mag_power_supply/README.md</span></code>.</p>
+</aside>
+<aside class="footnote brackets" id="f3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>This section is generated from <code class="docutils literal notranslate"><span class="pre">src/tsmadalg/tsmadalg/algorithms/mag_power_supply/example_config.json</span></code>.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ech_collector.html" class="btn btn-neutral float-left" title="ech_collector" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../api/tsmadkit.html" class="btn btn-neutral float-right" title="tsmadkit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025-2026, ITER Organization.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Versions</span>
+    v: stable
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl id="version-list">
+      <dt>Versions</dt>
+    </dl>
+  </div>
+</div>
+<script>
+  fetch("https://iterorganization.github.io/TSM-Anomaly-Detection/versions.json")
+    .then((response) => response.json())
+    .then((versions) => {
+      const list = document.getElementById("version-list");
+      for (const version of versions) {
+        const item = document.createElement("dd");
+        const link = document.createElement("a");
+        link.textContent = version.version;
+        link.href = version.url;
+        if (version.version === "stable") {
+          item.className = "rtd-current-item";
+        }
+        // Open the same page in the selected version, or its home page if the page does not exist there
+        link.addEventListener("click", async (event) => {
+          event.preventDefault();
+          const page = version.url + "algorithms/generated/mag_power_supply.html";
+          const response = await fetch(page, { method: "HEAD" }).catch(() => null);
+          window.location.href = response && response.ok ? page : version.url;
+        });
+        item.appendChild(link);
+        list.appendChild(item);
+      }
+    })
+    .catch(() => {});
+</script><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

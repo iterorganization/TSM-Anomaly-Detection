@@ -1,0 +1,469 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reference-State Management &mdash; TSM Anomaly Detection Algorithms  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/treeview.css?v=f8e9195c" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/treeview.js?v=265ad9b8"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Create a New Algorithm" href="create-algorithm.html" />
+    <link rel="prev" title="Configuration Files" href="configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            TSM Anomaly Detection Algorithms
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#two-packages-one-workflow">Two Packages, One Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#repository-layout">Repository Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#your-first-runtime-flow">Your First Runtime Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#understanding-the-result-object">Understanding the Result Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#configuration-comes-first">Configuration Comes First</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#detectors-that-compare-against-history">Detectors That Compare Against History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#using-the-catalog">Using the Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#package-boundaries">Package Boundaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#end-to-end-runtime-flow">End-to-End Runtime Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#configuration-and-instance-state">Configuration and Instance State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#built-in-setup-behavior">Built-In Setup Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#detector-contracts">Detector Contracts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#discovery-and-registry">Discovery and Registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#algorithm-availability">Algorithm Availability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#generated-algorithm-pages">Generated Algorithm Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html#how-everything-fits-together">How Everything Fits Together</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../citing.html">Citing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#minimal-valid-configuration">Minimal Valid Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#schema-overview">Schema Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#role-of-each-entry">Role of Each Entry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#detailed-semantics">Detailed Semantics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#name"><code class="docutils literal notranslate"><span class="pre">name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#signals"><code class="docutils literal notranslate"><span class="pre">signals</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#parameters"><code class="docutils literal notranslate"><span class="pre">parameters</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#model"><code class="docutils literal notranslate"><span class="pre">model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#anomaly-classes"><code class="docutils literal notranslate"><span class="pre">anomaly_classes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#artifacts"><code class="docutils literal notranslate"><span class="pre">artifacts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#reference-state"><code class="docutils literal notranslate"><span class="pre">reference_state</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#complete-example">Complete Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#validation-helpers">Validation Helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#what-happens-after-loading">What Happens After Loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#configuration-and-documentation">Configuration and Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#related-runtime-input-shape">Related Runtime Input Shape</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#related-pages">Related Pages</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reference-State Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#two-kinds-of-files">Two Kinds of Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-history-and-cache-stay-in-sync">How History and Cache Stay in Sync</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#starting-from-scratch">Starting From Scratch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-cache-in-detect">Using the Cache in <code class="docutils literal notranslate"><span class="pre">detect()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#where-to-go-next">Where to Go Next</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="create-algorithm.html">Create a New Algorithm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#required-package-layout">Required Package Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#naming-convention">Naming Convention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#minimal-single-input-example">Minimal Single-Input Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#matching-configuration">Matching Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#the-implementation-contract">The Implementation Contract</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="create-algorithm.html#constructor">Constructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="create-algorithm.html#setup"><code class="docutils literal notranslate"><span class="pre">setup()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="create-algorithm.html#detect"><code class="docutils literal notranslate"><span class="pre">detect()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#populate-anomalyresult-deliberately">Populate <code class="docutils literal notranslate"><span class="pre">AnomalyResult</span></code> Deliberately</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#use-models-carefully">Use Models Carefully</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#reference-state-example-pattern">Reference-State Example Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#testing-discovery">Testing Discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#using-the-template-generator">Using the Template Generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#checklist">Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-algorithm.html#related-pages">Related Pages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span></code> Command-Line Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#tsmadalg-list"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">list</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#tsmadalg-create"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">create</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#tsmadalg-run"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">run</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#relationship-to-the-registry-api">Relationship to the Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#recommended-workflow">Recommended Workflow</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Algorithms</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/index.html">Algorithm Catalog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/index.html#what-these-pages-contain">What These Pages Contain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/index.html#how-to-interpret-the-catalog">How to Interpret the Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/index.html#available-algorithms">Available Algorithms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/generated/ech_collector.html">ech_collector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/generated/mag_power_supply.html">mag_power_supply</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/tsmadkit.html">tsmadkit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/tsmadkit.html#module-tsmadkit">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/tsmadkit.html#module-tsmadkit.anomaly_detection">Core modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.anomaly_detection.AnomalyDetection"><code class="docutils literal notranslate"><span class="pre">AnomalyDetection</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.anomaly_result.AnomalyResult"><code class="docutils literal notranslate"><span class="pre">AnomalyResult</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.config.SignalsConfig"><code class="docutils literal notranslate"><span class="pre">SignalsConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.config.ModelConfig"><code class="docutils literal notranslate"><span class="pre">ModelConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.config.ReferenceStateConfig"><code class="docutils literal notranslate"><span class="pre">ReferenceStateConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.config.AlgorithmConfig"><code class="docutils literal notranslate"><span class="pre">AlgorithmConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.signals.SignalSpec"><code class="docutils literal notranslate"><span class="pre">SignalSpec</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.signals.SignalSet"><code class="docutils literal notranslate"><span class="pre">SignalSet</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.data.DataDict"><code class="docutils literal notranslate"><span class="pre">DataDict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.io.read_json"><code class="docutils literal notranslate"><span class="pre">read_json()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.io.write_json"><code class="docutils literal notranslate"><span class="pre">write_json()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.io.read_json_input_data"><code class="docutils literal notranslate"><span class="pre">read_json_input_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.io.write_json_input_data"><code class="docutils literal notranslate"><span class="pre">write_json_input_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.io.read_hdf5_input_data"><code class="docutils literal notranslate"><span class="pre">read_hdf5_input_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.io.write_hdf5_input_data"><code class="docutils literal notranslate"><span class="pre">write_hdf5_input_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.state.file_sha256"><code class="docutils literal notranslate"><span class="pre">file_sha256()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.state.StateFileConfig"><code class="docutils literal notranslate"><span class="pre">StateFileConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.state.CacheFileConfig"><code class="docutils literal notranslate"><span class="pre">CacheFileConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.state.ReferenceStateFileConfig"><code class="docutils literal notranslate"><span class="pre">ReferenceStateFileConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.state.State"><code class="docutils literal notranslate"><span class="pre">State</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.state.ManifestState"><code class="docutils literal notranslate"><span class="pre">ManifestState</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.state.HistoryState"><code class="docutils literal notranslate"><span class="pre">HistoryState</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.state.CacheState"><code class="docutils literal notranslate"><span class="pre">CacheState</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.state.ReferenceState"><code class="docutils literal notranslate"><span class="pre">ReferenceState</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.state.stack_cache_rows"><code class="docutils literal notranslate"><span class="pre">stack_cache_rows()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadkit.html#tsmadkit.preprocessing.get_above_threshold_window"><code class="docutils literal notranslate"><span class="pre">get_above_threshold_window()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/tsmadalg.html">tsmadalg</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/tsmadalg.html#module-tsmadalg">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/tsmadalg.html#module-tsmadalg.tools.registry">Registry and CLI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadalg.html#tsmadalg.tools.registry.list_algorithms"><code class="docutils literal notranslate"><span class="pre">list_algorithms()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadalg.html#tsmadalg.tools.registry.get_algorithm_class"><code class="docutils literal notranslate"><span class="pre">get_algorithm_class()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/tsmadalg.html#templates">Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/tsmadalg.html#module-tsmadalg.algorithms">Algorithm discovery</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/tsmadalg.html#algorithm-catalog">Algorithm catalog</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TSM Anomaly Detection Algorithms</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Reference-State Management</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guides/reference-state.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="reference-state-management">
+<span id="reference-state-guide"></span><h1>Reference-State Management<a class="headerlink" href="#reference-state-management" title="Link to this heading"></a></h1>
+<p>Some detectors cannot decide from a static, pre-trained model alone: they need
+to compare a new sample against a set of reference historical samples.
+<code class="docutils literal notranslate"><span class="pre">tsmadkit</span></code> supports this through a <code class="docutils literal notranslate"><span class="pre">reference_state</span></code>: a folder that
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">tsmadkit.AnomalyDetection.setup()</span></code> keeps organized and up to date, so
+that by the time <code class="docutils literal notranslate"><span class="pre">detect()</span></code> runs, those reference samples are ready to use
+without recomputing anything.</p>
+<section id="two-kinds-of-files">
+<h2>Two Kinds of Files<a class="headerlink" href="#two-kinds-of-files" title="Link to this heading"></a></h2>
+<p>A reference state manages two related sets of files, each tracked by its own
+manifest:</p>
+<ul class="simple">
+<li><p><strong>History</strong> is the raw reference data: one <code class="docutils literal notranslate"><span class="pre">*.h5</span></code> file per sample, each
+in the same <code class="docutils literal notranslate"><span class="pre">time</span></code>/<code class="docutils literal notranslate"><span class="pre">values</span></code> format described in <a class="reference internal" href="configuration.html"><span class="doc">Configuration Files</span></a>.
+The history manifest just records each file’s name and hash.</p></li>
+<li><p><strong>Cache</strong> is derived data, computed once per history sample so it does not
+need to be recomputed on every <code class="docutils literal notranslate"><span class="pre">detect()</span></code> call. Each cache file (<code class="docutils literal notranslate"><span class="pre">*.npz</span></code>)
+stores whatever your algorithm’s <code class="docutils literal notranslate"><span class="pre">transform()</span></code> method returns for the
+matching history sample. The cache manifest records each cache file’s hash
+together with the hash of the history file it was built from.</p></li>
+</ul>
+<p>In short: history is the raw data you compare against, and cache is the
+already-computed version of that data.</p>
+<p>For example, a reference state built from two shots, <code class="docutils literal notranslate"><span class="pre">1234</span></code> and <code class="docutils literal notranslate"><span class="pre">5678</span></code>,
+looks like this on disk:</p>
+<div class="treeview docutils container">
+<ul class="simple">
+<li><p><span class="treeview-icon treeview-dir-file" title="file"></span> reference_state.json</p></li>
+<li><p><span class="treeview-icon treeview-dir-folder" title="folder"></span> history</p>
+<ul>
+<li><p><span class="treeview-icon treeview-dir-file" title="file"></span> manifest.json</p></li>
+<li><p><span class="treeview-icon treeview-dir-file" title="file"></span> 1234.h5</p></li>
+<li><p><span class="treeview-icon treeview-dir-file" title="file"></span> 5678.h5</p></li>
+</ul>
+</li>
+<li><p><span class="treeview-icon treeview-dir-folder" title="folder"></span> cache</p>
+<ul>
+<li><p><span class="treeview-icon treeview-dir-file" title="file"></span> manifest.json</p></li>
+<li><p><span class="treeview-icon treeview-dir-file" title="file"></span> 1234.npz</p></li>
+<li><p><span class="treeview-icon treeview-dir-file" title="file"></span> 5678.npz</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">history/manifest.json</span></code> maps each raw sample to its hash:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"1234.h5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa2c9..."</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"5678.h5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9c1eab..."</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">cache/manifest.json</span></code> records, for each derived <code class="docutils literal notranslate"><span class="pre">.npz</span></code> file, which history
+sample it was built from and that sample’s hash at the time:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"1234.npz"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8210e..."</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"depends_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"../history/1234.h5"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"dependency_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa2c9..."</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"5678.npz"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b430f1..."</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"depends_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"../history/5678.h5"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"dependency_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9c1eab..."</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>That <code class="docutils literal notranslate"><span class="pre">dependency_hash</span></code> is the link between the two folders: it is how
+<code class="docutils literal notranslate"><span class="pre">setup()</span></code> recognizes when a cache file is still valid, and when it needs to
+be rebuilt from its history sample.</p>
+</section>
+<section id="how-history-and-cache-stay-in-sync">
+<h2>How History and Cache Stay in Sync<a class="headerlink" href="#how-history-and-cache-stay-in-sync" title="Link to this heading"></a></h2>
+<p>Recomputing every cache entry on every run would be wasteful, but serving a
+stale cache entry (built from a history sample that has since changed) would
+be wrong. <code class="docutils literal notranslate"><span class="pre">setup()</span></code> avoids both problems in two steps.</p>
+<p><strong>Step 1: refresh the history manifest, if asked to.</strong> The <code class="docutils literal notranslate"><span class="pre">check</span></code> mode in
+the configuration controls this:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">check=&quot;fast&quot;</span></code> (the default) trusts <code class="docutils literal notranslate"><span class="pre">history/manifest.json</span></code> as it is,
+without re-hashing the <code class="docutils literal notranslate"><span class="pre">*.h5</span></code> files. This is the cheap path for normal
+runs, where the history folder has not changed since the manifest was last
+written.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">check=&quot;full&quot;</span></code> re-hashes every <code class="docutils literal notranslate"><span class="pre">*.h5</span></code> file in <code class="docutils literal notranslate"><span class="pre">history/</span></code> and rewrites
+the manifest from scratch. Use this after adding, removing, or editing raw
+history samples by hand, so those changes are actually picked up.</p></li>
+</ul>
+<p><strong>Step 2: rebuild only the cache files that need it.</strong> For each entry in the
+(possibly just-refreshed) history manifest, <code class="docutils literal notranslate"><span class="pre">setup()</span></code> compares that entry’s
+hash against the <code class="docutils literal notranslate"><span class="pre">dependency_hash</span></code> recorded for the matching cache file. A
+cache file is rebuilt, by calling your algorithm’s <code class="docutils literal notranslate"><span class="pre">transform()</span></code> on that
+history sample, only when:</p>
+<ul class="simple">
+<li><p>it is missing, or</p></li>
+<li><p>its recorded <code class="docutils literal notranslate"><span class="pre">dependency_hash</span></code> no longer matches its history sample’s
+current hash, or</p></li>
+<li><p>the algorithm’s name, version, or configuration changed since the
+reference state was last written (which invalidates the whole cache at
+once, since the meaning of <code class="docutils literal notranslate"><span class="pre">transform()</span></code>’s output may have changed).
+The configuration is compared through its content hash, so reformatting
+the JSON file, passing the same content as a dictionary, or editing the
+<code class="docutils literal notranslate"><span class="pre">reference_state</span></code> section itself (e.g. switching <code class="docutils literal notranslate"><span class="pre">check</span></code> mode) does not
+count as a change.</p></li>
+</ul>
+<p>Every other cache file is left untouched. Note that step 2 runs regardless of
+<code class="docutils literal notranslate"><span class="pre">check</span></code> mode: even a fast check still rebuilds cache files that are missing
+or out of date, it just skips re-hashing history samples that a full check
+would have caught changing silently on disk.</p>
+<p>This is why adding historical comparison to a detector only requires one
+extra method, <code class="docutils literal notranslate"><span class="pre">transform(data:</span> <span class="pre">SignalSet)</span> <span class="pre">-&gt;</span> <span class="pre">dict</span></code>: <code class="docutils literal notranslate"><span class="pre">setup()</span></code> calls it
+once per history sample to populate the cache, and <code class="docutils literal notranslate"><span class="pre">detect()</span></code> can call it
+again on the current sample to compute the same features for comparison.</p>
+</section>
+<section id="starting-from-scratch">
+<span id="reference-state-from-scratch"></span><h2>Starting From Scratch<a class="headerlink" href="#starting-from-scratch" title="Link to this heading"></a></h2>
+<p>The first time <code class="docutils literal notranslate"><span class="pre">setup()</span></code> runs for a given reference state, none of the
+files above exist yet: no <code class="docutils literal notranslate"><span class="pre">reference_state.json</span></code>, no
+<code class="docutils literal notranslate"><span class="pre">history/manifest.json</span></code>, no <code class="docutils literal notranslate"><span class="pre">cache/manifest.json</span></code>. Nothing special needs
+to be done for that case — it is just the trivial version of the two-step
+algorithm above. A missing history manifest is treated the same as a stale
+one, so <code class="docutils literal notranslate"><span class="pre">setup()</span></code> builds it from the <code class="docutils literal notranslate"><span class="pre">*.h5</span></code> files in <code class="docutils literal notranslate"><span class="pre">history/</span></code>
+regardless of <code class="docutils literal notranslate"><span class="pre">check</span></code> mode. A missing cache manifest means every history
+sample looks new, so <code class="docutils literal notranslate"><span class="pre">transform()</span></code> runs once per sample to populate
+<code class="docutils literal notranslate"><span class="pre">cache/</span></code> and its manifest.</p>
+<p>In practice, the setup you do by hand is:</p>
+<ol class="arabic">
+<li><p>Pick a directory for the reference state, say <code class="docutils literal notranslate"><span class="pre">reference_state/</span></code>, and
+point the algorithm configuration’s <code class="docutils literal notranslate"><span class="pre">reference_state.path</span></code> at a
+<code class="docutils literal notranslate"><span class="pre">reference_state.json</span></code> inside it. That file <strong>does not</strong> need to exist yet;
+its parent directory is what this guide calls <code class="docutils literal notranslate"><span class="pre">&lt;reference_state_dir&gt;</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"reference_state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reference_state/reference_state.json"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"check"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fast"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create <code class="docutils literal notranslate"><span class="pre">&lt;reference_state_dir&gt;/history/</span></code> (<code class="docutils literal notranslate"><span class="pre">reference_state/history/</span></code> in
+the example above) and put your raw <code class="docutils literal notranslate"><span class="pre">*.h5</span></code> samples directly in it.</p></li>
+<li><p>Implement <code class="docutils literal notranslate"><span class="pre">transform()</span></code>.</p></li>
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">setup()</span></code> once. That single call creates
+<code class="docutils literal notranslate"><span class="pre">history/manifest.json</span></code>, <code class="docutils literal notranslate"><span class="pre">cache/manifest.json</span></code> (and the <code class="docutils literal notranslate"><span class="pre">.npz</span></code>
+files behind it), and <code class="docutils literal notranslate"><span class="pre">reference_state.json</span></code> itself, all inside
+<code class="docutils literal notranslate"><span class="pre">&lt;reference_state_dir&gt;</span></code>.</p></li>
+</ol>
+<p>Do not hand-write any of the three JSON files; <code class="docutils literal notranslate"><span class="pre">setup()</span></code> generates all of
+them.</p>
+</section>
+<section id="using-the-cache-in-detect">
+<h2>Using the Cache in <code class="docutils literal notranslate"><span class="pre">detect()</span></code><a class="headerlink" href="#using-the-cache-in-detect" title="Link to this heading"></a></h2>
+<p>Once <code class="docutils literal notranslate"><span class="pre">setup()</span></code> has run, the cache entries are loaded, stacked one row per
+history sample, and exposed as <code class="docutils literal notranslate"><span class="pre">self.cache_data</span></code>: a dict keyed by whatever
+fields your <code class="docutils literal notranslate"><span class="pre">transform()</span></code> returns. A typical <code class="docutils literal notranslate"><span class="pre">detect()</span></code> transforms the
+current sample the same way and compares the result against
+<code class="docutils literal notranslate"><span class="pre">self.cache_data</span></code>.</p>
+</section>
+<section id="where-to-go-next">
+<h2>Where to Go Next<a class="headerlink" href="#where-to-go-next" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="configuration.html#reference-state-section"><span class="std std-ref">reference_state</span></a> in <a class="reference internal" href="configuration.html"><span class="doc">Configuration Files</span></a> for the exact JSON
+keys and path conventions.</p></li>
+<li><p><a class="reference internal" href="create-algorithm.html"><span class="doc">Create a New Algorithm</span></a> for a runnable <code class="docutils literal notranslate"><span class="pre">transform()</span></code>/<code class="docutils literal notranslate"><span class="pre">detect()</span></code> example.</p></li>
+<li><p><a class="reference internal" href="../algorithms/generated/ech_collector.html"><span class="doc">ech_collector</span></a> for a real algorithm built this way.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="configuration.html" class="btn btn-neutral float-left" title="Configuration Files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="create-algorithm.html" class="btn btn-neutral float-right" title="Create a New Algorithm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025-2026, ITER Organization.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Versions</span>
+    v: stable
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl id="version-list">
+      <dt>Versions</dt>
+    </dl>
+  </div>
+</div>
+<script>
+  fetch("https://iterorganization.github.io/TSM-Anomaly-Detection/versions.json")
+    .then((response) => response.json())
+    .then((versions) => {
+      const list = document.getElementById("version-list");
+      for (const version of versions) {
+        const item = document.createElement("dd");
+        const link = document.createElement("a");
+        link.textContent = version.version;
+        link.href = version.url;
+        if (version.version === "stable") {
+          item.className = "rtd-current-item";
+        }
+        // Open the same page in the selected version, or its home page if the page does not exist there
+        link.addEventListener("click", async (event) => {
+          event.preventDefault();
+          const page = version.url + "guides/reference-state.html";
+          const response = await fetch(page, { method: "HEAD" }).catch(() => null);
+          window.location.href = response && response.ok ? page : version.url;
+        });
+        item.appendChild(link);
+        list.appendChild(item);
+      }
+    })
+    .catch(() => {});
+</script><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,479 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tsmadalg.tools.registry &mdash; TSM Anomaly Detection Algorithms  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/treeview.css?v=f8e9195c" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../_static/treeview.js?v=265ad9b8"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            TSM Anomaly Detection Algorithms
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting-started.html#two-packages-one-workflow">Two Packages, One Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting-started.html#repository-layout">Repository Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting-started.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting-started.html#your-first-runtime-flow">Your First Runtime Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting-started.html#understanding-the-result-object">Understanding the Result Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting-started.html#configuration-comes-first">Configuration Comes First</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting-started.html#detectors-that-compare-against-history">Detectors That Compare Against History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting-started.html#using-the-catalog">Using the Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting-started.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../architecture.html">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../architecture.html#package-boundaries">Package Boundaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../architecture.html#end-to-end-runtime-flow">End-to-End Runtime Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../architecture.html#configuration-and-instance-state">Configuration and Instance State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../architecture.html#built-in-setup-behavior">Built-In Setup Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../architecture.html#detector-contracts">Detector Contracts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../architecture.html#discovery-and-registry">Discovery and Registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../architecture.html#algorithm-availability">Algorithm Availability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../architecture.html#generated-algorithm-pages">Generated Algorithm Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../architecture.html#how-everything-fits-together">How Everything Fits Together</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../citing.html">Citing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/configuration.html">Configuration Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/configuration.html#minimal-valid-configuration">Minimal Valid Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/configuration.html#schema-overview">Schema Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/configuration.html#role-of-each-entry">Role of Each Entry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/configuration.html#detailed-semantics">Detailed Semantics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../guides/configuration.html#name"><code class="docutils literal notranslate"><span class="pre">name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../guides/configuration.html#signals"><code class="docutils literal notranslate"><span class="pre">signals</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../guides/configuration.html#parameters"><code class="docutils literal notranslate"><span class="pre">parameters</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../guides/configuration.html#model"><code class="docutils literal notranslate"><span class="pre">model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../guides/configuration.html#anomaly-classes"><code class="docutils literal notranslate"><span class="pre">anomaly_classes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../guides/configuration.html#artifacts"><code class="docutils literal notranslate"><span class="pre">artifacts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../guides/configuration.html#reference-state"><code class="docutils literal notranslate"><span class="pre">reference_state</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/configuration.html#complete-example">Complete Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/configuration.html#validation-helpers">Validation Helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/configuration.html#what-happens-after-loading">What Happens After Loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/configuration.html#configuration-and-documentation">Configuration and Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/configuration.html#related-runtime-input-shape">Related Runtime Input Shape</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/configuration.html#related-pages">Related Pages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/reference-state.html">Reference-State Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/reference-state.html#two-kinds-of-files">Two Kinds of Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/reference-state.html#how-history-and-cache-stay-in-sync">How History and Cache Stay in Sync</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/reference-state.html#starting-from-scratch">Starting From Scratch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/reference-state.html#using-the-cache-in-detect">Using the Cache in <code class="docutils literal notranslate"><span class="pre">detect()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/reference-state.html#where-to-go-next">Where to Go Next</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/create-algorithm.html">Create a New Algorithm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/create-algorithm.html#required-package-layout">Required Package Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/create-algorithm.html#naming-convention">Naming Convention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/create-algorithm.html#minimal-single-input-example">Minimal Single-Input Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/create-algorithm.html#matching-configuration">Matching Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/create-algorithm.html#the-implementation-contract">The Implementation Contract</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../guides/create-algorithm.html#constructor">Constructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../guides/create-algorithm.html#setup"><code class="docutils literal notranslate"><span class="pre">setup()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../guides/create-algorithm.html#detect"><code class="docutils literal notranslate"><span class="pre">detect()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/create-algorithm.html#populate-anomalyresult-deliberately">Populate <code class="docutils literal notranslate"><span class="pre">AnomalyResult</span></code> Deliberately</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/create-algorithm.html#use-models-carefully">Use Models Carefully</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/create-algorithm.html#reference-state-example-pattern">Reference-State Example Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/create-algorithm.html#testing-discovery">Testing Discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/create-algorithm.html#using-the-template-generator">Using the Template Generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/create-algorithm.html#checklist">Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/create-algorithm.html#related-pages">Related Pages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/cli.html"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span></code> Command-Line Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/cli.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/cli.html#tsmadalg-list"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">list</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/cli.html#tsmadalg-create"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">create</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/cli.html#tsmadalg-run"><code class="docutils literal notranslate"><span class="pre">tsmadalg</span> <span class="pre">run</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/cli.html#relationship-to-the-registry-api">Relationship to the Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../guides/cli.html#recommended-workflow">Recommended Workflow</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Algorithms</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../algorithms/index.html">Algorithm Catalog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../algorithms/index.html#what-these-pages-contain">What These Pages Contain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../algorithms/index.html#how-to-interpret-the-catalog">How to Interpret the Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../algorithms/index.html#available-algorithms">Available Algorithms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../algorithms/generated/ech_collector.html">ech_collector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../algorithms/generated/mag_power_supply.html">mag_power_supply</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/tsmadkit.html">tsmadkit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/tsmadkit.html#module-tsmadkit">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/tsmadkit.html#module-tsmadkit.anomaly_detection">Core modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.anomaly_detection.AnomalyDetection"><code class="docutils literal notranslate"><span class="pre">AnomalyDetection</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.anomaly_result.AnomalyResult"><code class="docutils literal notranslate"><span class="pre">AnomalyResult</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.config.SignalsConfig"><code class="docutils literal notranslate"><span class="pre">SignalsConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.config.ModelConfig"><code class="docutils literal notranslate"><span class="pre">ModelConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.config.ReferenceStateConfig"><code class="docutils literal notranslate"><span class="pre">ReferenceStateConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.config.AlgorithmConfig"><code class="docutils literal notranslate"><span class="pre">AlgorithmConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.signals.SignalSpec"><code class="docutils literal notranslate"><span class="pre">SignalSpec</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.signals.SignalSet"><code class="docutils literal notranslate"><span class="pre">SignalSet</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.data.DataDict"><code class="docutils literal notranslate"><span class="pre">DataDict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.io.read_json"><code class="docutils literal notranslate"><span class="pre">read_json()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.io.write_json"><code class="docutils literal notranslate"><span class="pre">write_json()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.io.read_json_input_data"><code class="docutils literal notranslate"><span class="pre">read_json_input_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.io.write_json_input_data"><code class="docutils literal notranslate"><span class="pre">write_json_input_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.io.read_hdf5_input_data"><code class="docutils literal notranslate"><span class="pre">read_hdf5_input_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.io.write_hdf5_input_data"><code class="docutils literal notranslate"><span class="pre">write_hdf5_input_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.state.file_sha256"><code class="docutils literal notranslate"><span class="pre">file_sha256()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.state.StateFileConfig"><code class="docutils literal notranslate"><span class="pre">StateFileConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.state.CacheFileConfig"><code class="docutils literal notranslate"><span class="pre">CacheFileConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.state.ReferenceStateFileConfig"><code class="docutils literal notranslate"><span class="pre">ReferenceStateFileConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.state.State"><code class="docutils literal notranslate"><span class="pre">State</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.state.ManifestState"><code class="docutils literal notranslate"><span class="pre">ManifestState</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.state.HistoryState"><code class="docutils literal notranslate"><span class="pre">HistoryState</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.state.CacheState"><code class="docutils literal notranslate"><span class="pre">CacheState</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.state.ReferenceState"><code class="docutils literal notranslate"><span class="pre">ReferenceState</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.state.stack_cache_rows"><code class="docutils literal notranslate"><span class="pre">stack_cache_rows()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadkit.html#tsmadkit.preprocessing.get_above_threshold_window"><code class="docutils literal notranslate"><span class="pre">get_above_threshold_window()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/tsmadalg.html">tsmadalg</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/tsmadalg.html#module-tsmadalg">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/tsmadalg.html#module-tsmadalg.tools.registry">Registry and CLI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadalg.html#tsmadalg.tools.registry.list_algorithms"><code class="docutils literal notranslate"><span class="pre">list_algorithms()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadalg.html#tsmadalg.tools.registry.get_algorithm_class"><code class="docutils literal notranslate"><span class="pre">get_algorithm_class()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/tsmadalg.html#templates">Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/tsmadalg.html#module-tsmadalg.algorithms">Algorithm discovery</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/tsmadalg.html#algorithm-catalog">Algorithm catalog</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">TSM Anomaly Detection Algorithms</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">tsmadalg.tools.registry</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for tsmadalg.tools.registry</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""</span>
+<span class="sd">Algorithm discovery and registry.</span>
+
+<span class="sd">Algorithm packages are discovered in the :mod:`tsmadalg.algorithms` package</span>
+<span class="sd">directory. Additional local/developer algorithm folders can be discovered by</span>
+<span class="sd">setting ``TSMADALG_EXT_PATH`` to a list of directories, separated by the</span>
+<span class="sd">platform path separator (``:`` on Linux/macOS, ``;`` on Windows). Each</span>
+<span class="sd">directory listed there is treated like an additional algorithms root.</span>
+<span class="sd">"""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">importlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">import_module</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pkgutil</span><span class="w"> </span><span class="kn">import</span> <span class="n">iter_modules</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">tsmadalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">algorithms</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tsmadkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnomalyDetection</span>
+
+<span class="n">ENV_ALGORITHM_PATH</span> <span class="o">=</span> <span class="s2">"TSMADALG_EXT_PATH"</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_algorithm_roots</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Path</span><span class="p">]:</span>
+    <span class="n">roots</span> <span class="o">=</span> <span class="p">[</span><span class="n">Path</span><span class="p">(</span><span class="n">algorithms</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">raw_path</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ENV_ALGORITHM_PATH</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">pathsep</span><span class="p">):</span>
+        <span class="n">raw_path</span> <span class="o">=</span> <span class="n">raw_path</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">raw_path</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">raw_path</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()</span> <span class="ow">and</span> <span class="n">path</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">roots</span><span class="p">:</span>
+            <span class="n">roots</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">roots</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_discover_algorithms</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Return the discovered algorithm packages, as a mapping from name to directory."""</span>
+    <span class="n">found</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">root</span> <span class="ow">in</span> <span class="n">_get_algorithm_roots</span><span class="p">():</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s2">"main.py"</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">candidates</span> <span class="o">=</span> <span class="p">[(</span><span class="n">root</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">root</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">candidates</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">root</span> <span class="o">/</span> <span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">iter_modules</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">root</span><span class="p">)])</span>
+                <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">ispkg</span>
+            <span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">pkg_name</span><span class="p">,</span> <span class="n">pkg_dir</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">:</span>
+            <span class="c1"># Built-in algorithms take precedence, then local roots in path order</span>
+            <span class="n">found</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">pkg_name</span><span class="p">,</span> <span class="n">pkg_dir</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">found</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_load_algorithm</span><span class="p">(</span><span class="n">pkg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pkg_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">object</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Import an algorithm's ``main.py`` and return its registry entry."""</span>
+    <span class="c1"># Make external algorithm folders importable as children of tsmadalg.algorithms</span>
+    <span class="n">path_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">pkg_dir</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">path_str</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">algorithms</span><span class="o">.</span><span class="n">__path__</span><span class="p">:</span>
+        <span class="n">algorithms</span><span class="o">.</span><span class="n">__path__</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path_str</span><span class="p">)</span>
+
+    <span class="n">module_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">algorithms</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">pkg_name</span><span class="si">}</span><span class="s2">.main"</span>
+    <span class="n">meta</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"name"</span><span class="p">:</span> <span class="n">pkg_name</span><span class="p">,</span>
+        <span class="s2">"module"</span><span class="p">:</span> <span class="n">module_name</span><span class="p">,</span>
+        <span class="s2">"class"</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">"version"</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"unavailable"</span><span class="p">,</span>
+        <span class="s2">"source"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">pkg_dir</span><span class="p">),</span>
+        <span class="s2">"error_type"</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">"error_message"</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="c1"># One broken algorithm must not break the others</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">algo_mod</span> <span class="o">=</span> <span class="n">import_module</span><span class="p">(</span><span class="n">module_name</span><span class="p">)</span>
+        <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">obj</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="n">algo_mod</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isclass</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">AnomalyDetection</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__module__</span> <span class="o">==</span> <span class="n">module_name</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">LookupError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"main.py must define exactly one AnomalyDetection subclass, found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span><span class="si">}</span><span class="s2">."</span>
+            <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="n">meta</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">"error_type"</span><span class="p">:</span> <span class="nb">type</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="s2">"error_message"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">)})</span>
+        <span class="k">return</span> <span class="n">meta</span>
+
+    <span class="n">meta</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s2">"class"</span><span class="p">:</span> <span class="n">classes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="s2">"version"</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">classes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">"__version__"</span><span class="p">,</span> <span class="s2">"unknown"</span><span class="p">),</span>
+            <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"available"</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">meta</span>
+
+
+<div class="viewcode-block" id="list_algorithms">
+<a class="viewcode-back" href="../../../api/tsmadalg.html#tsmadalg.tools.registry.list_algorithms">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">list_algorithms</span><span class="p">(</span><span class="n">include_unavailable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">object</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Discover and import all anomaly detection algorithms, and return their registry entries.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    include_unavailable : bool, default=True</span>
+<span class="sd">        If False, only return algorithms whose implementation imported successfully.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict[str, dict[str, object]]</span>
+<span class="sd">        A dictionary where each key is the algorithm name and each value is</span>
+<span class="sd">        a dictionary containing:</span>
+
+<span class="sd">        - "name": the algorithm name</span>
+<span class="sd">        - "module": the dotted module path of the algorithm's ``main.py``</span>
+<span class="sd">        - "class": the algorithm class reference (subclass of AnomalyDetection),</span>
+<span class="sd">          or ``None`` if discovery failed</span>
+<span class="sd">        - "version": the algorithm version declared in the class attribute</span>
+<span class="sd">          ``__version__``, or ``None`` if discovery failed</span>
+<span class="sd">        - "status": either "available" or "unavailable"</span>
+<span class="sd">        - "source": path to the directory containing the algorithm's ``main.py``</span>
+<span class="sd">        - "error_type": the exception type name raised during discovery, or</span>
+<span class="sd">          ``None`` if discovery succeeded</span>
+<span class="sd">        - "error_message": the exception message raised during discovery, or</span>
+<span class="sd">          ``None`` if discovery succeeded</span>
+<span class="sd">    """</span>
+    <span class="n">registry</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">name</span><span class="p">:</span> <span class="n">_load_algorithm</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">pkg_dir</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">pkg_dir</span> <span class="ow">in</span> <span class="n">_discover_algorithms</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="n">include_unavailable</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">registry</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="n">name</span><span class="p">:</span> <span class="n">meta</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">meta</span> <span class="ow">in</span> <span class="n">registry</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">meta</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"available"</span>
+    <span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="get_algorithm_class">
+<a class="viewcode-back" href="../../../api/tsmadalg.html#tsmadalg.tools.registry.get_algorithm_class">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_algorithm_class</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">[</span><span class="n">AnomalyDetection</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Return the algorithm class for a discovered and available algorithm.</span>
+<span class="sd">    The class should inherit from `AnomalyDetection`.</span>
+<span class="sd">    Only this algorithm is imported.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    name: str</span>
+<span class="sd">        The name of the algorithm to load.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    type[AnomalyDetection]</span>
+<span class="sd">        The loaded anomaly detection algorithm class that inherits from `AnomalyDetection`.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        - If the specified algorithm name is not found.</span>
+<span class="sd">        - If the algorithm is unavailable.</span>
+<span class="sd">    """</span>
+    <span class="n">found</span> <span class="o">=</span> <span class="n">_discover_algorithms</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">found</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"Unknown algorithm '</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">'. Available: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">found</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+        <span class="p">)</span>
+
+    <span class="n">meta</span> <span class="o">=</span> <span class="n">_load_algorithm</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">found</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">meta</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">"available"</span><span class="p">:</span>
+        <span class="n">reason</span> <span class="o">=</span> <span class="n">meta</span><span class="p">[</span><span class="s2">"error_message"</span><span class="p">]</span> <span class="ow">or</span> <span class="s2">"algorithm import failed"</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Algorithm '</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">' is unavailable: </span><span class="si">{</span><span class="n">reason</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">meta</span><span class="p">[</span><span class="s2">"class"</span><span class="p">]</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025-2026, ITER Organization.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Versions</span>
+    v: stable
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl id="version-list">
+      <dt>Versions</dt>
+    </dl>
+  </div>
+</div>
+<script>
+  fetch("https://iterorganization.github.io/TSM-Anomaly-Detection/versions.json")
+    .then((response) => response.json())
+    .then((versions) => {
+      const list = document.getElementById("version-list");
+      for (const version of versions) {
+        const item = document.createElement("dd");
+        const link = document.createElement("a");
+        link.textContent = version.version;
+        link.href = version.url;
+        if (version.version === "stable") {
+          item.className = "rtd-current-item";
+        }
+        // Open the same page in the selected version, or its home page if the page does not exist there
+        link.addEventListener("click", async (event) => {
+          event.preventDefault();
+          const page = version.url + "_modules/tsmadalg/tools/registry.html";
+          const response = await fetch(page, { method: "HEAD" }).catch(() => null);
+          window.location.href = response && response.ok ? page : version.url;
+        });
+        item.appendChild(link);
+        list.appendChild(item);
+      }
+    })
+    .catch(() => {});
+</script><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
