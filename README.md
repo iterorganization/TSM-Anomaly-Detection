@@ -1,5 +1,10 @@
 # Anomaly Detection Algorithms
 
+[![Build](https://img.shields.io/github/actions/workflow/status/iterorganization/TSM-Anomaly-Detection/python-tests.yml?branch=main&label=Build)](https://github.com/iterorganization/TSM-Anomaly-Detection/actions/workflows/python-tests.yml)
+[![Docs](https://img.shields.io/github/actions/workflow/status/iterorganization/TSM-Anomaly-Detection/docs.yml?branch=main&label=Docs)](https://iterorganization.github.io/TSM-Anomaly-Detection/)
+[![Python](https://img.shields.io/badge/Python-3.10%E2%80%933.15-blue?logo=python&logoColor=white)](.github/workflows/python-tests.yml)
+[![License: LGPL-3.0](https://img.shields.io/badge/License-LGPL--3.0-ea7233)](COPYING.LESSER)
+
 This repository is used for the development of time-resolved and intershot anomaly detection algorithms for the TSM framework.
 The repository contains two main Python packages:
 
@@ -62,34 +67,18 @@ See the package READMEs linked above for the full list.
 
 ## Documentation
 
-Full API documentation for `tsmadkit` and `tsmadalg` is available in the `docs/` folder.
-The documentation is built using Sphinx, as an interactive HTML manual and a PDF manual.
+The documentation of `tsmadkit` and `tsmadalg` is available online at https://iterorganization.github.io/TSM-Anomaly-Detection/.
 
-### Building the documentation
-
-Navigate to the `docs/` directory and install the requirements:
+To build the documentation locally, install the requirements and run Sphinx from the `docs/` directory:
 
 ```bash
 cd docs/
 pip install -r requirements.txt
-```
-
-Build the HTML documentation:
-
-```bash
-make clean
 make html
 ```
 
-Open `build/html/index.html` in a browser to view the documentation.
+Open `build/html/index.html` in a browser to view it.
 
-Build the PDF documentation (requires a LaTeX distribution with `latexmk` and `pdflatex`):
-
-```bash
-make latexpdf
-```
-
-The PDF is written to `build/latex/`.
 See `docs/README.md` for more details.
 
 ## Testing
@@ -132,6 +121,27 @@ The `tests/integration/` folder contains one folder per algorithm, with a script
 These scripts are not collected by `pytest`, and may need the algorithm's own dependencies.
 See the README in each folder for requirements and instructions.
 
+## Citation
+
+If you use `tsmadkit` or `tsmadalg` in a scientific publication, please consider citing the following article:
+
+> Paret et al. (2026). [Design and implementation of machine learning-based anomaly detection in the ITER Tokamak Systems Monitor](https://doi.org/10.3389/fphy.2026.1824578). *Frontiers in Physics* 14:1824578.
+
+BibTeX entry:
+
+```bibtex
+@article{Paret2026TSM,
+  author  = {Paret, Joris and Sammuli, Brian and Costa Pérez, Víctor and Saura, Nathaniel and Hernández Cubo, Laura and Iglesias, Daniel},
+  title   = {Design and implementation of machine learning-based anomaly detection in the {ITER} {Tokamak Systems Monitor}},
+  journal = {Frontiers in Physics},
+  volume  = {14},
+  pages   = {1824578},
+  year    = {2026},
+  doi     = {10.3389/fphy.2026.1824578},
+  issn    = {2296-424X}
+}
+```
+
 ## License
 
-The `tsmadkit` and `tsmadalg` packages are released under the [LGPL-3.0 License](LICENSE-LGPL).
+The `tsmadkit` and `tsmadalg` packages are released under the [LGPL-3.0 License](COPYING.LESSER).

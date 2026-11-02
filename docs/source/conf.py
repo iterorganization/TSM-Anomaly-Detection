@@ -35,9 +35,17 @@ extensions = [
     'sphinx_copybutton',
     "sphinx_treeview",
 	'sphinx_rtd_theme',
-    "myst_parser"
+    "myst_parser",
+    "sphinxcontrib.bibtex"
 ]
 myst_enable_extensions = ["colon_fence"]
+
+# Bibliography used by :cite: roles (or {cite} in Markdown)
+bibtex_bibfiles = ["references.bib"]
+bibtex_default_style = "unsrt"
+
+# Each page numbers its own references from [1], so labels repeat across pages
+suppress_warnings = ["bibtex.duplicate_label"]
 
 templates_path = ['_templates']
 exclude_patterns = []
@@ -51,6 +59,9 @@ autoclass_content = 'both'
 # sort members by the order they appear in source files
 autodoc_member_order = 'bysource'
 
+# Algorithm-specific dependencies are not needed to document the algorithms
+autodoc_mock_imports = ["tsfel", "scipy", "sklearn", "torch", "mag_ps_cinn"]
+
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 
@@ -63,6 +74,13 @@ html_static_path = []
 html_theme_options = {
     "collapse_navigation": False,
     "navigation_depth": 3,
+}
+
+# Version menu (_templates/versions.html), filled from the versions.json
+# published by the documentation workflow
+html_context = {
+    "docs_version": os.environ.get("DOCS_VERSION", "dev"),
+    "versions_url": "https://iterorganization.github.io/TSM-Anomaly-Detection/versions.json",
 }
 
 
@@ -147,6 +165,21 @@ Implementation
    :members:
    :undoc-members:
    :show-inheritance:
+"""
+
+        if readme_path.exists() and "{cite}" in readme_path.read_text(encoding="utf-8"):
+            content += """
+
+------------
+
+References
+----------
+
+.. bibliography::
+   :filter: docname in docnames
+"""
+
+        content += f"""
 
 .. rubric:: Footnotes
 

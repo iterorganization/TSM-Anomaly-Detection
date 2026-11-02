@@ -1,0 +1,39 @@
+{#- Classic Read the Docs version menu, filled from the published versions.json -#}
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Versions</span>
+    v: {{ docs_version|e }}
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl id="version-list">
+      <dt>Versions</dt>
+    </dl>
+  </div>
+</div>
+<script>
+  fetch("{{ versions_url }}")
+    .then((response) => response.json())
+    .then((versions) => {
+      const list = document.getElementById("version-list");
+      for (const version of versions) {
+        const item = document.createElement("dd");
+        const link = document.createElement("a");
+        link.textContent = version.version;
+        link.href = version.url;
+        if (version.version === "{{ docs_version|e }}") {
+          item.className = "rtd-current-item";
+        }
+        // Open the same page in the selected version, or its home page if the page does not exist there
+        link.addEventListener("click", async (event) => {
+          event.preventDefault();
+          const page = version.url + "{{ pagename }}.html";
+          const response = await fetch(page, { method: "HEAD" }).catch(() => null);
+          window.location.href = response && response.ok ? page : version.url;
+        });
+        item.appendChild(link);
+        list.appendChild(item);
+      }
+    })
+    .catch(() => {});
+</script>

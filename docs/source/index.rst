@@ -38,6 +38,8 @@ Use this documentation as a complete guide to the repository:
   ``tsmadalg.algorithms`` packages currently present in the source tree.
 - :doc:`api/tsmadkit` and :doc:`api/tsmadalg` provide the low-level API
   reference once you already know the overall workflow.
+- :doc:`citing` explains how to cite these packages in a scientific
+  publication.
 
 Recommended Reading Order
 -------------------------
@@ -88,6 +90,7 @@ The most important ideas to keep in mind are:
 
    getting-started
    architecture
+   citing
 
 .. toctree::
    :hidden:
