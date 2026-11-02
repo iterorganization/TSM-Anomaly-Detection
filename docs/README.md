@@ -9,6 +9,19 @@ The documentation source lives in the `source/` folder.
 The same source produces both the interactive HTML manual (`build/html/`) and the PDF manual (`build/latex/`).
 Everything under `build/` is generated and not tracked by Git.
 
+## Online documentation
+
+The HTML documentation is published on GitHub Pages at https://iterorganization.github.io/TSM-Anomaly-Detection/ by the `.github/workflows/docs.yml` workflow.
+Each version is built separately and stored in its own folder of the `gh-pages` branch:
+
+- a push to `main` updates `stable/`
+- a push to `dev` updates `dev/`
+- a release tag such as `v0.1.0` creates `0.1.0/`
+
+The workflow also runs `write_versions.py`, which writes `versions.json` and redirects the site root to `stable/`.
+`versions.json` lists `stable`, `dev`, and one version per `vX.Y.Z` tag, and is read by the version menu at the bottom of the sidebar (`source/_templates/versions.html`).
+Locally built documentation is labeled `dev` in the version menu, unless the `DOCS_VERSION` environment variable is set.
+
 ## Requirements
 
 Install the documentation dependencies:
@@ -58,6 +71,9 @@ The generated PDF will be available under `build/latex/`.
 - `source/api/`: API reference pages for both packages
 - `source/algorithms/`: algorithm catalog entry point
 - `source/guides/`: contributor-oriented guides such as creating a new algorithm
+- `source/citing.rst`: how to cite the packages
+- `source/references.bib`: bibliography used by `:cite:` roles in the documentation
+- `source/_templates/versions.html`: version menu, filled from the published `versions.json`
 - `source/conf.py`: Sphinx configuration and build-time generation logic
 
 ## Algorithm catalog generation

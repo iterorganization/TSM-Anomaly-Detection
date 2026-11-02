@@ -66,34 +66,18 @@ See the package READMEs linked above for the full list.
 
 ## Documentation
 
-Full API documentation for `tsmadkit` and `tsmadalg` is available in the `docs/` folder.
-The documentation is built using Sphinx, as an interactive HTML manual and a PDF manual.
+The documentation of `tsmadkit` and `tsmadalg` is available online at https://iterorganization.github.io/TSM-Anomaly-Detection/.
 
-### Building the documentation
-
-Navigate to the `docs/` directory and install the requirements:
+To build the documentation locally, install the requirements and run Sphinx from the `docs/` directory:
 
 ```bash
 cd docs/
 pip install -r requirements.txt
-```
-
-Build the HTML documentation:
-
-```bash
-make clean
 make html
 ```
 
-Open `build/html/index.html` in a browser to view the documentation.
+Open `build/html/index.html` in a browser to view it.
 
-Build the PDF documentation (requires a LaTeX distribution with `latexmk` and `pdflatex`):
-
-```bash
-make latexpdf
-```
-
-The PDF is written to `build/latex/`.
 See `docs/README.md` for more details.
 
 ## Testing

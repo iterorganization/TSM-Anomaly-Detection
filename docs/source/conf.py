@@ -59,6 +59,9 @@ autoclass_content = 'both'
 # sort members by the order they appear in source files
 autodoc_member_order = 'bysource'
 
+# Algorithm-specific dependencies are not needed to document the algorithms
+autodoc_mock_imports = ["tsfel", "scipy", "sklearn", "torch", "mag_ps_cinn"]
+
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 
@@ -71,6 +74,13 @@ html_static_path = []
 html_theme_options = {
     "collapse_navigation": False,
     "navigation_depth": 3,
+}
+
+# Version menu (_templates/versions.html), filled from the versions.json
+# published by the documentation workflow
+html_context = {
+    "docs_version": os.environ.get("DOCS_VERSION", "dev"),
+    "versions_url": "https://iterorganization.github.io/TSM-Anomaly-Detection/versions.json",
 }
 
 
