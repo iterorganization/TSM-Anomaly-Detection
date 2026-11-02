@@ -35,9 +35,17 @@ extensions = [
     'sphinx_copybutton',
     "sphinx_treeview",
 	'sphinx_rtd_theme',
-    "myst_parser"
+    "myst_parser",
+    "sphinxcontrib.bibtex"
 ]
 myst_enable_extensions = ["colon_fence"]
+
+# Bibliography used by :cite: roles (or {cite} in Markdown)
+bibtex_bibfiles = ["references.bib"]
+bibtex_default_style = "unsrt"
+
+# Each page numbers its own references from [1], so labels repeat across pages
+suppress_warnings = ["bibtex.duplicate_label"]
 
 templates_path = ['_templates']
 exclude_patterns = []
@@ -147,6 +155,21 @@ Implementation
    :members:
    :undoc-members:
    :show-inheritance:
+"""
+
+        if readme_path.exists() and "{cite}" in readme_path.read_text(encoding="utf-8"):
+            content += """
+
+------------
+
+References
+----------
+
+.. bibliography::
+   :filter: docname in docnames
+"""
+
+        content += f"""
 
 .. rubric:: Footnotes
 

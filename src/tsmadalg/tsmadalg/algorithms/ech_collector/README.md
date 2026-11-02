@@ -1,6 +1,6 @@
 # Gyrotron collector intershot anomaly detection
 
-`ech_collector` is an unsupervised intershot detector for the thermal behavior of a gyrotron collector.
+`ech_collector` is an unsupervised intershot detector for the thermal behavior of a gyrotron collector {cite}`paret_2026_gyrotron`.
 It compares a completed pulse with a history of previously observed pulses and flags thermal profiles that lie outside the dense operating regimes represented in that history.
 The detector is intended to highlight unusual pulses for review; an outlier is not, by itself, evidence of a physical fault.
 
