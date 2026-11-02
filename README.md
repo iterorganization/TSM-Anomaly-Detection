@@ -1,5 +1,9 @@
 # Anomaly Detection Algorithms
 
+[![Build](https://img.shields.io/github/actions/workflow/status/iterorganization/TSM-Anomaly-Detection/python-tests.yml?branch=main&label=Build)](https://github.com/iterorganization/TSM-Anomaly-Detection/actions/workflows/python-tests.yml)
+[![Python](https://img.shields.io/badge/Python-3.10%E2%80%933.15-blue?logo=python&logoColor=white)](.github/workflows/python-tests.yml)
+[![License: LGPL-3.0](https://img.shields.io/badge/License-LGPL--3.0-ea7233)](COPYING.LESSER)
+
 This repository is used for the development of time-resolved and intershot anomaly detection algorithms for the TSM framework.
 The repository contains two main Python packages:
 
@@ -132,6 +136,27 @@ The `tests/integration/` folder contains one folder per algorithm, with a script
 These scripts are not collected by `pytest`, and may need the algorithm's own dependencies.
 See the README in each folder for requirements and instructions.
 
+## Citation
+
+If you use `tsmadkit` or `tsmadalg` in a scientific publication, please consider citing the following article:
+
+> Paret et al. (2026). [Design and implementation of machine learning-based anomaly detection in the ITER Tokamak Systems Monitor](https://doi.org/10.3389/fphy.2026.1824578). *Frontiers in Physics* 14:1824578.
+
+BibTeX entry:
+
+```bibtex
+@article{Paret2026TSM,
+  author  = {Paret, Joris and Sammuli, Brian and Costa Pérez, Víctor and Saura, Nathaniel and Hernández Cubo, Laura and Iglesias, Daniel},
+  title   = {Design and implementation of machine learning-based anomaly detection in the {ITER} {Tokamak Systems Monitor}},
+  journal = {Frontiers in Physics},
+  volume  = {14},
+  pages   = {1824578},
+  year    = {2026},
+  doi     = {10.3389/fphy.2026.1824578},
+  issn    = {2296-424X}
+}
+```
+
 ## License
 
-The `tsmadkit` and `tsmadalg` packages are released under the [LGPL-3.0 License](LICENSE-LGPL).
+The `tsmadkit` and `tsmadalg` packages are released under the [LGPL-3.0 License](COPYING.LESSER).
