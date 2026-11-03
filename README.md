@@ -2,6 +2,8 @@
 
 [![Build](https://img.shields.io/github/actions/workflow/status/iterorganization/TSM-Anomaly-Detection/python-tests.yml?branch=main&label=Build)](https://github.com/iterorganization/TSM-Anomaly-Detection/actions/workflows/python-tests.yml)
 [![Docs](https://img.shields.io/github/actions/workflow/status/iterorganization/TSM-Anomaly-Detection/docs.yml?branch=main&label=Docs)](https://iterorganization.github.io/TSM-Anomaly-Detection/)
+[![tsmadkit coverage](https://img.shields.io/endpoint?url=https://iterorganization.github.io/TSM-Anomaly-Detection/badges/tsmadkit.json)](tests/unit/tsmadkit)
+[![tsmadalg coverage](https://img.shields.io/endpoint?url=https://iterorganization.github.io/TSM-Anomaly-Detection/badges/tsmadalg.json)](tests/unit/tsmadalg)
 [![Python](https://img.shields.io/badge/Python-3.10%E2%80%933.15-blue?logo=python&logoColor=white)](.github/workflows/python-tests.yml)
 [![License: LGPL-3.0](https://img.shields.io/badge/License-LGPL--3.0-ea7233)](COPYING.LESSER)
 
